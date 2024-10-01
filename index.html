@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="Pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <link rel="stylesheet" href="./styles/styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles/output.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+    <title>Pastelaria Berbigão</title>
+    <link rel="icon" href="/assets/berbigao.ico" sizes="16x16" type="ico">
+    <style>
+        .whats-link {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 1px 1px 2px #888;
+            z-index: 1000;
+        }
+        .fa-whatsapp {
+            margin-top: 16px;
+        }
+        body.overflow-hidden {
+            overflow: hidden; /* Desabilita o scroll */
+        }
+        .custom-radio {
+            width: 15px; /* Ajuste o tamanho conforme necessário */
+            height: 15px; /* Ajuste o tamanho conforme necessário */
+            accent-color: #44BEBF;
+            outline: none;
+            box-shadow: none; /* Remove o contorno */
+            appearance: none; /* Remove o estilo padrão */
+            -webkit-appearance: none; /* Remove o estilo padrão no Safari */
+            -moz-appearance: none; /* Remove o estilo padrão no Firefox */
+            border: 1px solid #44BEBF; /* Adiciona uma borda personalizada */
+            border-radius: 50%; /* Faz a borda ser redonda */
+            position: relative;
+        }
+
+        .custom-radio::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: white; /* Cor de fundo do input não selecionado */
+            border-radius: 50%;
+        }
+
+        input[type="radio"] {
+            cursor: pointer;
+        }
+        
+        .custom-radio:checked::before {
+            background-color: #44BEBF; /* Cor de fundo do input selecionado */
+        }
+
+        .custom-radio:checked{
+            display: inline-block;
+        }
+
+        .add-to-cart-btn {
+            background-color: #44BEBF;
+            border: none;
+        }
+        .add-to-cart-btn {
+            transition: transform 0.2s; /* Transição suave */
+        }
+
+        .add-to-cart-btn.clicked {
+            transform: scale(1.2); /* Aumenta o tamanho do botão */
+        }
+        .cart-item {
+            padding: 10px; /* Adiciona um pouco de espaço interno */
+        }
+
+        .border-b {
+            border-bottom: 1px solid #D1D5DB; /* Cor da borda inferior, pode ser ajustada conforme necessário */
+        }
+
+        .pb-2 {
+            padding-bottom: 0.5rem; /* Adiciona espaço na parte inferior do item */
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem; /* Adiciona margem inferior para separação */
+        }
+        
+
+
+
+
+
+    </style>
+
+</head>
+<body>
+    <a class="whats-link" href="https://web.whatsapp.com/send?phone=47996870409" target="_blank">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+
+<header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
+    <div class="w-full h-full flex flex-col justify-center items-center">
+    
+        <img
+            src="./assets/logo.png"
+            alt="Logo Pastelaria"
+            class="w-32 h-32 rounded-full shadow-1g hover:scale-110 duration-200"
+            id="logo"
+        />
+        <h1 class="text-2xl mt-4 mb-1 font-bold text-white">
+            Pastelaria Berbigão
+        </h1>
+
+        <span class="text-white font-medium">Av. Brasil, 1263 - Balneário Camboriú </span>
+
+        <div class="bg-green-600 px-4 py-1 rounded-lg mt-4 text-white" id="date-span">
+            <span>Dom á Dom - 16:00 as 23:30</span>
+        </div>
+
+    </div>
+</header>
+
+
+
+
+ <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+    Conheça nosso menu
+ </h2>
+
+    <div id="menu" >
+        <div class="px-30 lg:px-40">
+            <div class="flex justify-center items-center gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+                <img
+                    src="./assets/tradicionais.png"
+                    alt="especiais"
+                    class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+                <div>
+                    <p class="font-bold md:text-xl">Sabores Tradicionais</p>
+                    <p class="text-sm md:text-base">
+                        Os pastéis tradicionais são iguarias brasileiras com massa crocante e recheios variados,
+                        fritos até ficarem dourados e irresistíveis.
+                        Uma verdadeira delícia que combina simplicidade e sabor.
+                    </p>
+                </div>
+            </div>
+        
+            <!--Tradicionais-->
+            <div id="Tradicionais" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+                <!--carne-->    
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Pastel de Carne</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-carne" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2"></label>
+                                    <input type="radio" name="tamanho-carne" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 12.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Carne">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                                
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--carne-->    
+                <!-- Queijo -->    
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Pastel de Queijo</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-queijo" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-queijo" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 12.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Queijo">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Queijo -->
+
+                <!-- Frango -->    
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Pastel de Frango</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-frango" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-frango" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 12.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Frango">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Frango -->
+
+
+                <!-- Banana -->    
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Pastel de Banana</p><p class="font-semibold">Polvilhado no açúcar e canela</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banana" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banana" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 12.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Banana">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banana -->
+                <!--Tradicionais-->
+            </div>
+            <!--Especiais-->
+                <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
+                    <img
+                        src="./assets/especiais.png"
+                        alt="especiais"
+                        class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                    />
+                    <div>
+                        <p class="font-bold md:text-xl">Sabores Especiais</p>
+                        <p class="text-sm md:text-base">
+                            Os pastéis especiais trazem recheios únicos e sofisticados,
+                            mantendo a mesma massa crocante e dourada. Cada mordida oferece uma explosão
+                            de sabores surpreendentes e irresistíveis, que encantam todos os paladares.
+                        </p>
+                    </div>
+                </div>
+                <div id="Especiais" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+
+                    <!-- Portuguesa (Carne, Ovo e Azeitona) -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Portuguesa</p><p class="font-semibold">(Carne, Ovo e Azeitona)</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-portuguesa" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-portuguesa" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Portuguesa">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Portuguesa (Carne, Ovo e Azeitona) -->
+
+                    <!-- Carne com Bacon -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Carne com Bacon</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-carne-bacon" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-carne-bacon" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Carne com Bacon">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carne com Bacon -->
+
+                    <!-- Carne com Queijo -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Carne com Queijo</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-carne-queijo" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-carne-queijo" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Carne com Queijo">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carne com Queijo -->
+
+                    <!-- Frango com Palmito -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Frango com Palmito</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-palmito" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-palmito" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Palmito">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Frango com Palmito -->
+
+                    <!-- Frango com Requeijão -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Frango com Requeijão</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-requeijao" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-requeijao" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Requeijão">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Frango com Requeijão -->
+
+                    <!-- Frango com Calabresa -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Frango com Calabresa</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-calabresa" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-calabresa" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Calabresa">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Frango com Calabresa -->
+
+                    <!-- Frango com Queijo -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Frango com Queijo</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-queijo" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-frango-queijo" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Queijo">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Frango com Queijo -->
+
+                    <!-- Calabresa (Calabresa, Requeijão, Tomate e Orégano) -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Calabresa</p><p class="font-semibold">(Calabresa, Requeijão, Tomate e Orégano)</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-calabresa" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-calabresa" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Calabresa">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calabresa (Calabresa, Requeijão, Tomate e Orégano) -->
+
+                    <!-- Pastel De Pizza (Queijo, Presunto, Tomate e Orégano) -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Pastel De Pizza</p><p class="font-semibold">(Queijo, Presunto, Tomate e Orégano)</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-pizza" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-pizza" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel De Pizza">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pastel De Pizza (Queijo, Presunto, Tomate e Orégano) -->
+
+                    <!-- Queijo com milho -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Queijo com Milho</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-queijo-milho" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-queijo-milho" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Queijo com Milho">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Queijo com milho -->
+
+                    <!-- Queijo com bacon -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Queijo com Bacon</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-queijo-bacon" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-queijo-bacon" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Queijo com Bacon">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Queijo com bacon -->
+
+                    <!-- Queijo, Ovo, Tomate seco e Orégano -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Queijo, Ovo, Tomate seco e Orégano</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-queijo-ovo" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-queijo-ovo" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Queijo, Ovo, Tomate Seco e Orégano">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Queijo, Ovo, Tomate seco e Orégano -->
+
+                    <!-- Palmito c/ Alho Poró e Requeijao -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Palmito c/ Alho Poró e Requeijão</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-palmito" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-palmito" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Palmito c/ Alho Poró e Requeijão">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Palmito c/ Alho Poró e Requeijao -->
+
+                    <!-- Brócolis (brocolis, milho e tomate seco) -->
+                    <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                        <div class="w-full">
+                            <p class="font-bold md:text-xl">Brócolis</p><p class="font-semibold">(Brócolis, Milho e Tomate Seco)</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-brocolis" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                        
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-brocolis" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                        
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Brócolis">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brócolis (brocolis, milho e tomate seco) -->
+                <!--fim Especiais-->
+                </div>
+        <!-- Doces -->
+        <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
+            <img
+                src="./assets/doces.png"
+                alt="especiais"
+                class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            <div>
+                <p class="font-bold md:text-xl">Sabores Doces</p>
+                <p class="text-sm md:text-base">
+                    Os pastéis doces são uma verdadeira tentação! Com recheios sofisticados,
+                    cada mordida oferece uma explosão de sabor que derrete na boca,
+                    proporcionando uma experiência irresistível e marcante.
+                </p>
+            </div>
+        </div>
+        <div id="Doces" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+            
+        
+
+
+
+                <!-- Prestígio (Chocolate Preto com Coco) -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Prestígio</p><p class="font-semibold">(Chocolate Preto com Coco)</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-prestigio" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-prestigio" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Prestígio">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Prestígio (Chocolate Preto com Coco) -->
+
+                <!-- Chocolate Preto com Morango -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Chocolate Preto com Morango</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-chocolate-preto-morango" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-chocolate-preto-morango" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Chocolate Preto com Morango">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chocolate Preto com Morango -->
+
+                <!-- Chocolate Branco com Morango -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Chocolate Branco com Morango</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-chocolate-branco-morango" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-chocolate-branco-morango" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Chocolate Branco com Morango">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chocolate Branco com Morango -->
+
+                <!-- Chocolate Preto e Branco -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Chocolate Preto e Branco</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-chocolate-preto-branco" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-chocolate-preto-branco" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Chocolate Preto e Branco">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chocolate Preto e Branco -->
+
+                <!-- Romeu e Julieta (Goiabada com Queijo) -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Romeu e Julieta</p><p class="font-semibold">(Goiabada com Queijo)</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-romeu-julieta" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-romeu-julieta" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Romeu e Julieta">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Romeu e Julieta (Goiabada com Queijo) -->
+
+                <!-- Banana com Chocolate Preto -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Banana com Chocolate Preto</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banana-chocolate-preto" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banana-chocolate-preto" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Banana com Chocolate Preto">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banana com Chocolate Preto -->
+
+                <!-- Banana com Chocolate Branco -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Banana com Chocolate Branco</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banana-chocolate-branco" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banana-chocolate-branco" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Banana com Chocolate Branco">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banana com Chocolate Branco -->
+
+                <!-- Banoffee (Banana, Doce de Leite e Canela, Polvilhado no Açúcar e Canela) -->
+                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                    <div class="w-full">
+                        <p class="font-bold md:text-xl">Banoffee</p><p class="font-semibold">(Banana, Doce de Leite e Canela)</p>
+                        <div class="flex items-center gap-2 justify-between mt-3">
+                            <div class="input-master flex items-center gap-2">
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banoffee" value="G" class="custom-radio" checked>
+                                    <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
+                                    
+                                </label>
+                                <label class="flex items-center space-x-2">
+                                    <input type="radio" name="tamanho-banoffee" value="P" class="custom-radio">
+                                    <span class="text-sm font-bold">R$ 13.00 (Pequeno)</span>
+                                    
+                                </label>
+                            </div>
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Banoffee">
+                                <i class="fa fa-cart-plus text-lg text-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banoffee (Banana, Doce de Leite e Canela, Polvilhado no Açúcar e Canela) -->
+        <!-- fim Doces -->
+        </div>
+        <!--GOURMETS-->
+        <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
+            <img
+                src="./assets/gourmets.png"
+                alt="especiais"
+                class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+            <div>
+                <p class="font-bold md:text-xl">Sabores Gourmets</p>
+                <p class="text-sm md:text-base">
+                    Os pastéis gourmet oferecem combinações sofisticadas e inovadoras,
+                    com recheios preparados cuidadosamente. Cada mordida traz uma harmonia
+                    de sabores, proporcionando uma experiência única e refinada.
+                </p>
+            </div>
+        </div>
+        <div id="Doces" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+            <!-- Berbigão -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Berbigão</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-berbigao" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-berbigao" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Berbigão">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Berbigão -->
+
+            <!-- Camarão -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Camarão</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-camarao" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-camarao" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Camarão">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Camarão -->
+
+            <!-- Camarão com Requeijão -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Camarão com Requeijão</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-camarao-requeijao" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-camarao-requeijao" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Camarão com Requeijão">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Camarão com Requeijão -->
+
+            <!-- Camarão com Palmito -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Camarão com Palmito</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-camarao-palmito" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-camarao-palmito" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Camarão com Palmito">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Camarão com Palmito -->
+
+            <!-- Linguiça Blumenau (Linguiça Blumenau, Requeijão e Vinagrete) -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Linguiça Blumenau</p><p class="font-semibold">(Linguiça, Requeijão e Vinagrete)</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-linguica-blumenau" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-linguica-blumenau" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Linguiça Blumenau">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Linguiça Blumenau (Linguiça, Requeijão e Vinagrete) -->
+
+            <!-- Quatro Queijos (Mussarela, Parmesão, Gorgonzola e Cheddar) -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Quatro Queijos</p><p class="font-semibold">(Mussarela, Parmesão, Gorgonzola e Cheddar)</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-quatro-queijos" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-quatro-queijos" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Quatro Queijos">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Quatro Queijos (Mussarela, Parmesão, Gorgonzola e Cheddar) -->
+
+            <!-- Paçoca de Pinhão -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Paçoca de Pinhão</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-pacoca-pinhao" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-pacoca-pinhao" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Paçoca de Pinhão">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Paçoca de Pinhão -->
+
+            <!-- Siri -->
+            <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="w-full">
+                    <p class="font-bold md:text-xl">Siri</p>
+                    <div class="flex items-center gap-2 justify-between mt-3">
+                        <div class="input-master flex items-center gap-2">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-siri" value="G" class="custom-radio" checked>
+                                <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
+                                
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="tamanho-siri" value="P" class="custom-radio">
+                                <span class="text-sm font-bold">R$ 15.00 (Pequeno)</span>
+                                
+                            </label>
+                        </div>
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Siri">
+                            <i class="fa fa-cart-plus text-lg text-white"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Siri -->
+            <!--FIM GOURMETS-->
+        </div>
+        <!--Porções-->
+
+    <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
+        <img
+            src="./assets/porções.png"
+            alt="especiais"
+            class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+        />
+        <div>
+            <p class="font-bold md:text-xl">Porções</p>
+            <p class="text-sm md:text-base">
+                As porções são perfeitas para compartilhar! Preparadas com
+                ingredientes frescos e de qualidade, cada prato é uma explosão
+                de sabor e textura, ideal para complementar qualquer refeição.
+            </p>
+        </div>
+    </div>
+    <div id="porções" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+
+        <!-- Porção de Mini Pasteis (4 un.) - Tradicionais -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Porção de Mini Pasteis (4 un.) - Tradicionais</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 19.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="19.00" data-name="Mini Pasteis Tradicionais (4 un.)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Porção de Mini Pasteis (4 un.) - Tradicionais -->
+
+        <!-- Porção de Mini Pasteis (4 un.) - Especiais/Gourmets -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Porção de Mini Pasteis (4 un.) - Especiais/Gourmets</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 24.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="24.00" data-name="Mini Pasteis Especiais/Gourmets (4 un.)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Porção de Mini Pasteis (4 un.) - Especiais/Gourmets -->
+
+        <!-- Porção de Mini Pasteis (8 un.) - Tradicionais -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Porção de Mini Pasteis (8 un.) - Tradicionais</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 30.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="30.00" data-name="Mini Pasteis Tradicionais (8 un.)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Porção de Mini Pasteis (8 un.) - Tradicionais -->
+
+        <!-- Porção de Mini Pasteis (8 un.) - Especiais/Gourmets -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Porção de Mini Pasteis (8 un.) - Especiais/Gourmets</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 37.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="37.00" data-name="Mini Pasteis Especiais/Gourmets (8 un.)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Porção de Mini Pasteis (8 un.) - Especiais/Gourmets -->
+
+        <!-- Bolinho de Feijão (5 un.) -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Bolinho de Feijão (5 un.)</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 15.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="15.00" data-name="Bolinho de Feijão (5 un.)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Bolinho de Feijão (5 un.) -->
+
+        <!-- Mini Pão de Queijo (10 un.) -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Mini Pão de Queijo (10 un.)</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 16.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="16.00" data-name="Mini Pão de Queijo (10 un.)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mini Pão de Queijo (10 un.) -->
+
+        <!-- Raquete de Frango (500g) -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Raquete de Frango (500g)</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 25.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="25.00" data-name="Raquete de Frango (500g)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Raquete de Frango (500g) -->
+
+        <!-- Fritas (500g) -->
+        <div class="flex gap-2 border-b border-gray-300 pb-4">
+            <div class="w-full">
+                <p class="font-bold">Fritas (500g)</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 30.00</p>
+                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="30.00" data-name="Fritas (500g)">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Fritas (500g) -->
+
+
+        <!--Fim Porções-->
+    </div>
+        <!--bebidas-->
+        <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Bebidas</h2>
+        <div id="porções" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+                    
+                    <!-- Caldo de Cana -->
+                    <div class="flex gap-2 border-b cart-item border-gray-300 pb-4">
+                        <img src="./assets/caldo-de-cana.png" alt="Caldo de Cana" class="w-28 h-28  rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Caldo de Cana</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <div class="input-master flex items-center gap-2">
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-caldo" value="G" class="custom-radio" checked>
+                                        <span class="text-sm font-bold">R$ 12.00 (500ml)</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2">
+                                        <input type="radio" name="tamanho-caldo" value="P" class="custom-radio">
+                                        <span class="text-sm font-bold">R$ 10.00 (300ml)</span>
+                                    </label>
+                                </div>
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Caldo de Cana">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Caldo de Cana -->
+                    <!-- Caipirinha -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/caipirinha.png" alt="Caipirinha" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Caipirinha de Caldo de Cana</p><p class="font-semibold">(Vodka, Cachaça ou Gin)</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 19.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="19.00" data-name="Caipirinha de Caldo de Cana">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Caipirinha -->
+                    
+
+                    <!-- Água s/ Gás -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/agua.png" alt="Água s/ Gás" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Água s/ Gás</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 4.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 4.00" data-name="Água s/ Gás">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Água s/ Gás -->
+                    
+                    <!-- Água c/ Gás -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/agua-com-gas.png" alt="Água c/ Gás" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Água c/ Gás</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 4.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 4.00" data-name="Água c/ Gás">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Água c/ Gás -->
+                    
+                    <!-- Coca-Cola -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/coca-cola.png" alt="Coca-Cola" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Coca-Cola</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Coca-Cola">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Coca-Cola -->
+                    
+                    <!-- Coca-Cola Zero -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/coca-cola-0.png" alt="Coca-Cola Zero" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Coca-Cola Zero</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Coca-Cola Zero">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Coca-Cola Zero -->
+                    
+                    <!-- Pepsi -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/pepsi.png" alt="Pepsi" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Pepsi</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Pepsi">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pepsi -->
+                    
+                    <!-- Schweppes -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/schweppes.png" alt="Schweppes" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Schweppes</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Schweppes">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Schweppes -->
+                    
+                    <!-- Fanta Laranja -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/fanta-laranja.png" alt="Fanta Laranja" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Fanta Laranja</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Fanta Laranja">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fanta Laranja -->
+                    
+                    <!-- Guaraná -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/guarana-normal.png" alt="Guaraná" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Guaraná</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Guaraná">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Guaraná -->
+                    
+                    <!-- Guaraná Zero -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/guarana.png" alt="Guaraná Zero" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Guaraná Zero</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 7.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Guaraná Zero">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Guaraná Zero -->
+                    
+                    <!-- Chocoleite -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/chocoleite.png" alt="Chocoleite" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Choco-Leite</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Choco-Leite">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chocoleite -->
+                    
+                    <!-- Ice Tea Limão -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/icetea-limao.png" alt="Ice Tea Limão" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Ice Tea Limão</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Ice Tea Limão">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ice Tea Limão -->
+                    
+                    <!-- Ice Tea Pêssego -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/icetea-pessego.png" alt="Ice Tea Pêssego" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Ice Tea Pêssego</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Ice Tea Pêssego">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ice Tea Pêssego -->
+                    
+                    <!-- Del Valle Pêssego -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/dell-pessego.png" alt="Del Valle Pêssego" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Del Valle Pêssego</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Del Valle Pêssego">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Del Valle Pêssego -->
+                    
+                    <!-- Del Valle Uva -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/dell-uva.png" alt="Del Valle Uva" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Del Valle Uva</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Del Valle Uva">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Del Valle Uva -->
+                    
+                    <!-- Amstel Lata -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/amstel-lata.png" alt="Amstel Lata" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Amstel Lata</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Amstel Lata">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Amstel Lata -->
+                    
+                    <!-- Brahma Lata -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/brahma-lata.png" alt="Brahma Lata" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Brahma Lata</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 8.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Brahma Lata">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brahma Lata -->
+                    
+                    <!-- Heineken Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/heineken-long.png" alt="Heineken Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Heineken Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 14.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Heineken Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Heineken Long Neck -->
+                    
+                    <!-- Heineken Long Neck Zero -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/heineken-long-0.png" alt="Heineken Long Neck Zero" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Heineken Long Neck Zero</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 14.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Heineken Long Neck Zero">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Heineken Long Neck Zero -->
+                    
+                    <!-- Amstel Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/amstel-long.png" alt="Amstel Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Amstel Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 12.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Amstel Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Amstel Long Neck -->
+                    
+                    <!-- Amstel Ultra Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/amstel-ultra-long.png" alt="Amstel Ultra Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Amstel Ultra Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 12.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Amstel Ultra Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Amstel Ultra Long Neck -->
+                    
+                    <!-- Eisenbahn Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/eisenbahn-long.png" alt="Eisenbahn Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Eisenbahn Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 12.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Eisenbahn Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Eisenbahn Long Neck -->
+                    
+                    <!-- Michelob Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/michelob-long.png" alt="Michelob Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Michelob Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 14.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Michelob Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Michelob Long Neck -->
+                    
+                    <!-- Sol Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/sol-long.png" alt="Sol Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Sol Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 12.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Sol Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sol Long Neck -->
+                    
+                    <!-- Stella Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/stella-long.png" alt="Stella Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Stella Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 14.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Stella Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Stella Long Neck -->
+                    
+                    <!-- Budweiser Long Neck -->
+                    <div class="flex gap-2 border-b border-gray-300 pb-4">
+                        <img src="./assets/budweiser-long.png" alt="Budweiser Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+                        <div class="w-full">
+                            <p class="font-bold">Budweiser Long Neck</p>
+                            <div class="flex items-center gap-2 justify-between mt-3">
+                                <p class="font-bold text-lg">R$ 12.00</p>
+                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Budweiser Long Neck">
+                                    <i class="fa fa-cart-plus text-lg text-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Budweiser Long Neck -->
+                    <!--fim bebidas -->
+                </div>
+            
+
+
+
+
+
+
+
+
+
+        <!--Fim menu -->
+        </div>
+    </div>
+
+    <div class="overflow-auto bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center hidden" id="cart-modal">
+        <div class="bg-white p-5 rounded-md min-w-[80%] md:min-w-[600px] max-h-[80vh] modal-conteudo flex flex-col">
+            <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
+            <div id="cart-items" class="flex-grow overflow-y-auto mb-2 max-h-[60vh] space-y-1"></div>
+            <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+            <p class="font-bold mt-4">Endereço de entrega</p>
+            <input
+                type="text"
+                placeholder="Digite seu endereço completo..."
+                id="address"
+                class="w-full border-2 p-1 rounded my-1"
+            />
+            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
+            <div class="flex items-center justify-between mt-5 w-full">
+                <button id="close-modal-btn" class="bg-red-500 text-white px-4 py-1 rounded">Fechar</button>
+                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+<footer class="w-full bg-red-500 py-2 fixed bottom-0 z-40 flex items-center justify-center">
+    <button class="flex items-center gap-2 text-white font-bold" id="cart-bnt">
+        (<span id="cart-count">0</span>) Veja meu carrinho
+        <i class="fa fa-cart-plus text-lg text-white"></i>
+    </button>
+</footer>
+        
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="script.js"></script>
+    <scrip src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></scrip>
+
+</body>
+</html>
