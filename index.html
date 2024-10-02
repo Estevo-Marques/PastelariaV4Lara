@@ -36,15 +36,15 @@
             overflow: hidden; /* Desabilita o scroll */
         }
         .custom-radio {
-            width: 15px; /* Ajuste o tamanho conforme necessário */
-            height: 15px; /* Ajuste o tamanho conforme necessário */
+            width: 20px; /* Ajuste o tamanho conforme necessário */
+            height: 20px; /* Ajuste o tamanho conforme necessário */
             accent-color: #44BEBF;
             outline: none;
             box-shadow: none; /* Remove o contorno */
             appearance: none; /* Remove o estilo padrão */
             -webkit-appearance: none; /* Remove o estilo padrão no Safari */
             -moz-appearance: none; /* Remove o estilo padrão no Firefox */
-            border: 1px solid #44BEBF; /* Adiciona uma borda personalizada */
+            border: 1px solid #000000; /* Adiciona uma borda personalizada */
             border-radius: 50%; /* Faz a borda ser redonda */
             position: relative;
         }
@@ -54,7 +54,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-color: white; /* Cor de fundo do input não selecionado */
+            background-color: #91c7c7; /* Cor de fundo do input não selecionado */
             border-radius: 50%;
         }
 
@@ -64,6 +64,13 @@
         
         .custom-radio:checked::before {
             background-color: #44BEBF; /* Cor de fundo do input selecionado */
+            content: '\f00c'; /* Código Unicode para o ícone de check */
+            font-family: 'Font Awesome 5 Free'; /* Certifique-se de que a fonte está correta */
+            font-weight: 900; /* Necessário para alguns ícones do Font Awesome */
+            text-align: center; /* Centraliza o ícone */
+            line-height: 1.6; /* Ajusta a posição vertical do ícone */
+            font-size: 12px; /* Ajuste o tamanho do ícone aqui */
+            color: #000;
         }
 
         .custom-radio:checked{
@@ -86,7 +93,7 @@
         }
 
         .border-b {
-            border-bottom: 1px solid #D1D5DB; /* Cor da borda inferior, pode ser ajustada conforme necessário */
+            border-bottom: 1px solid #44BEBF; /* Cor da borda inferior, pode ser ajustada conforme necessário */
         }
 
         .pb-2 {
@@ -116,7 +123,7 @@
         <img
             src="./assets/logo.png"
             alt="Logo Pastelaria"
-            class="w-32 h-32 rounded-full shadow-1g hover:scale-110 duration-200"
+            class="w-28 h-28 md:min-h-32 md:min-w-32 rounded-full shadow-1g hover:scale-110 duration-200"
             id="logo"
         />
         <h1 class="text-2xl mt-4 mb-1 font-bold text-white">
@@ -145,26 +152,25 @@
                 <img
                     src="./assets/tradicionais.png"
                     alt="especiais"
-                    class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                    class="w-28 h-28 md:min-h-32 md:min-w-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
                 />
                 <div>
-                    <p class="font-bold md:text-xl">Sabores Tradicionais</p>
+                    <p class="font-bold text-lg">Sabores Tradicionais</p>
                     <p class="text-sm md:text-base">
                         Os pastéis tradicionais são iguarias brasileiras com massa crocante e recheios variados,
                         fritos até ficarem dourados e irresistíveis.
-                        Uma verdadeira delícia que combina simplicidade e sabor.
                     </p>
                 </div>
             </div>
         
             <!--Tradicionais-->
-            <div id="Tradicionais" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+            <div id="Tradicionais" class="grid grid-cols-1 md:grid-cols-2 gap-2  md:gap-10 mx-auto max-w-7xl px-2 mb-16">
                 <!--carne-->    
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Pastel de Carne</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-carne" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
@@ -184,12 +190,13 @@
                     </div>
                 </div>
                 <!--carne-->    
+                
                 <!-- Queijo -->    
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Pastel de Queijo</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-queijo" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
@@ -210,23 +217,21 @@
                 <!-- Queijo -->
 
                 <!-- Frango -->    
-                <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
+                <div class="flex gap-2 cart-item border-b border-gray-300  pb-4">
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Pastel de Frango</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-frango" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
-                                    
                                 </label>
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-frango" value="P" class="custom-radio">
                                     <span class="text-sm font-bold">R$ 12.00 (Pequeno)</span>
-                                    
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Frango">
+                            <button class="px-5 py-1 rounded add-to-cart-btn" data-name="Pastel de Frango">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -234,31 +239,27 @@
                 </div>
                 <!-- Frango -->
 
-
-                <!-- Banana -->    
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
-                        <p class="font-bold md:text-xl">Pastel de Banana</p><p class="font-semibold">Polvilhado no açúcar e canela</p>
+                        <p class="font-bold md:text-xl inline">Pastel de Banana</p>
+                        <p class="font-semibold inline">- Polvilhado no açúcar e canela</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-banana" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 16.00 (Grande)</span>
-                                    
                                 </label>
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-banana" value="P" class="custom-radio">
                                     <span class="text-sm font-bold">R$ 12.00 (Pequeno)</span>
-                                    
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Banana">
+                            <button class="px-5 py-1 rounded add-to-cart-btn" data-name="Pastel de Banana">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <!-- Banana -->
                 <!--Tradicionais-->
             </div>
             <!--Especiais-->
@@ -266,14 +267,13 @@
                     <img
                         src="./assets/especiais.png"
                         alt="especiais"
-                        class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                        class="w-28 h-28 md:min-h-32 md:min-w-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
                     />
                     <div>
                         <p class="font-bold md:text-xl">Sabores Especiais</p>
                         <p class="text-sm md:text-base">
                             Os pastéis especiais trazem recheios únicos e sofisticados,
-                            mantendo a mesma massa crocante e dourada. Cada mordida oferece uma explosão
-                            de sabores surpreendentes e irresistíveis, que encantam todos os paladares.
+                            mantendo a mesma massa crocante e dourada.
                         </p>
                     </div>
                 </div>
@@ -282,9 +282,9 @@
                     <!-- Portuguesa (Carne, Ovo e Azeitona) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
-                            <p class="font-bold md:text-xl">Portuguesa</p><p class="font-semibold">(Carne, Ovo e Azeitona)</p>
+                            <p class="font-bold md:text-xl inline">Portuguesa</p><p class="font-semibold inline"> (Carne, Ovo e Azeitona)</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-portuguesa" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -309,7 +309,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Carne com Bacon</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-carne-bacon" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -334,7 +334,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Carne com Queijo</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-carne-queijo" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -359,7 +359,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Frango com Palmito</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-frango-palmito" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -384,7 +384,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Frango com Requeijão</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-frango-requeijao" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -409,7 +409,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Frango com Calabresa</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-frango-calabresa" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -434,7 +434,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Frango com Queijo</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-frango-queijo" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -457,9 +457,9 @@
                     <!-- Calabresa (Calabresa, Requeijão, Tomate e Orégano) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
-                            <p class="font-bold md:text-xl">Calabresa</p><p class="font-semibold">(Calabresa, Requeijão, Tomate e Orégano)</p>
+                            <p class="font-bold md:text-xl inline">Calabresa</p><p class="font-semibold inline">, Requeijão, Tomate e Orégano</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-calabresa" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -482,9 +482,9 @@
                     <!-- Pastel De Pizza (Queijo, Presunto, Tomate e Orégano) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
-                            <p class="font-bold md:text-xl">Pastel De Pizza</p><p class="font-semibold">(Queijo, Presunto, Tomate e Orégano)</p>
+                            <p class="font-bold md:text-xl inline">Pastel De Pizza</p><p class="font-semibold inline"> (Queijo, Presunto, Tomate e Orégano)</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-pizza" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -509,7 +509,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Queijo com Milho</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-queijo-milho" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -534,7 +534,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Queijo com Bacon</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-queijo-bacon" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -559,7 +559,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Queijo, Ovo, Tomate seco e Orégano</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-queijo-ovo" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -584,7 +584,7 @@
                         <div class="w-full">
                             <p class="font-bold md:text-xl">Palmito c/ Alho Poró e Requeijão</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-palmito" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -607,9 +607,9 @@
                     <!-- Brócolis (brocolis, milho e tomate seco) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
-                            <p class="font-bold md:text-xl">Brócolis</p><p class="font-semibold">(Brócolis, Milho e Tomate Seco)</p>
+                            <p class="font-bold md:text-xl inline">Brócolis</p><p class="font-semibold inline"> (Brócolis, Milho e Tomate Seco)</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-brocolis" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -634,15 +634,14 @@
         <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
             <img
                 src="./assets/doces.png"
-                alt="especiais"
-                class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                alt="Doces"
+                class="w-28 h-28 md:min-h-32 md:min-w-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
             />
             <div>
-                <p class="font-bold md:text-xl">Sabores Doces</p>
+                <p class="font-bold md:text-lg">Sabores Doces</p>
                 <p class="text-sm md:text-base">
                     Os pastéis doces são uma verdadeira tentação! Com recheios sofisticados,
-                    cada mordida oferece uma explosão de sabor que derrete na boca,
-                    proporcionando uma experiência irresistível e marcante.
+                    cada mordida oferece uma explosão de sabor que derrete na boca.
                 </p>
             </div>
         </div>
@@ -655,9 +654,9 @@
                 <!-- Prestígio (Chocolate Preto com Coco) -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
-                        <p class="font-bold md:text-xl">Prestígio</p><p class="font-semibold">(Chocolate Preto com Coco)</p>
+                        <p class="font-bold md:text-xl inline">Prestígio</p><p class="font-semibold inline"> (Chocolate Preto com Coco)</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-prestigio" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -682,7 +681,7 @@
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Chocolate Preto com Morango</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-chocolate-preto-morango" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -707,7 +706,7 @@
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Chocolate Branco com Morango</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-chocolate-branco-morango" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -732,7 +731,7 @@
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Chocolate Preto e Branco</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-chocolate-preto-branco" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -755,9 +754,9 @@
                 <!-- Romeu e Julieta (Goiabada com Queijo) -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
-                        <p class="font-bold md:text-xl">Romeu e Julieta</p><p class="font-semibold">(Goiabada com Queijo)</p>
+                        <p class="font-bold md:text-xl inline">Romeu e Julieta</p><p class="font-semibold inline"> (Goiabada com Queijo)</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-romeu-julieta" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -782,7 +781,7 @@
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Banana com Chocolate Preto</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-banana-chocolate-preto" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -807,7 +806,7 @@
                     <div class="w-full">
                         <p class="font-bold md:text-xl">Banana com Chocolate Branco</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-banana-chocolate-branco" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -830,9 +829,9 @@
                 <!-- Banoffee (Banana, Doce de Leite e Canela, Polvilhado no Açúcar e Canela) -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
-                        <p class="font-bold md:text-xl">Banoffee</p><p class="font-semibold">(Banana, Doce de Leite e Canela)</p>
+                        <p class="font-bold md:text-xl inline">Banoffee</p><p class="font-semibold inline"> (Banana, Doce de Leite e Canela)</p>
                         <div class="flex items-center gap-2 justify-between mt-3">
-                            <div class="input-master flex items-center gap-2">
+                            <div class="input-master flex items-center gap-3">
                                 <label class="flex items-center space-x-2">
                                     <input type="radio" name="tamanho-banoffee" value="G" class="custom-radio" checked>
                                     <span class="text-sm font-bold">R$ 20.00 (Grande)</span>
@@ -857,15 +856,14 @@
         <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
             <img
                 src="./assets/gourmets.png"
-                alt="especiais"
-                class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                alt="Gourmets"
+                class="w-28 h-28 md:min-h-32 md:min-w-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
             />
             <div>
-                <p class="font-bold md:text-xl">Sabores Gourmets</p>
+                <p class="font-bold md:text-lg">Sabores Gourmets</p>
                 <p class="text-sm md:text-base">
                     Os pastéis gourmet oferecem combinações sofisticadas e inovadoras,
-                    com recheios preparados cuidadosamente. Cada mordida traz uma harmonia
-                    de sabores, proporcionando uma experiência única e refinada.
+                    com recheios preparados cuidadosamente.
                 </p>
             </div>
         </div>
@@ -875,7 +873,7 @@
                 <div class="w-full">
                     <p class="font-bold md:text-xl">Berbigão</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-berbigao" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -900,7 +898,7 @@
                 <div class="w-full">
                     <p class="font-bold md:text-xl">Camarão</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-camarao" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -925,7 +923,7 @@
                 <div class="w-full">
                     <p class="font-bold md:text-xl">Camarão com Requeijão</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-camarao-requeijao" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -950,7 +948,7 @@
                 <div class="w-full">
                     <p class="font-bold md:text-xl">Camarão com Palmito</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-camarao-palmito" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -973,9 +971,9 @@
             <!-- Linguiça Blumenau (Linguiça Blumenau, Requeijão e Vinagrete) -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
-                    <p class="font-bold md:text-xl">Linguiça Blumenau</p><p class="font-semibold">(Linguiça, Requeijão e Vinagrete)</p>
+                    <p class="font-bold md:text-xl inline">Linguiça Blumenau</p><p class="font-semibold inline">, Requeijão e Vinagrete</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-linguica-blumenau" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -998,9 +996,9 @@
             <!-- Quatro Queijos (Mussarela, Parmesão, Gorgonzola e Cheddar) -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
-                    <p class="font-bold md:text-xl">Quatro Queijos</p><p class="font-semibold">(Mussarela, Parmesão, Gorgonzola e Cheddar)</p>
+                    <p class="font-bold md:text-xl">Quatro Queijos</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-quatro-queijos" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -1025,7 +1023,7 @@
                 <div class="w-full">
                     <p class="font-bold md:text-xl">Paçoca de Pinhão</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-pacoca-pinhao" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -1050,7 +1048,7 @@
                 <div class="w-full">
                     <p class="font-bold md:text-xl">Siri</p>
                     <div class="flex items-center gap-2 justify-between mt-3">
-                        <div class="input-master flex items-center gap-2">
+                        <div class="input-master flex items-center gap-3">
                             <label class="flex items-center space-x-2">
                                 <input type="radio" name="tamanho-siri" value="G" class="custom-radio" checked>
                                 <span class="text-sm font-bold">R$ 24.00 (Grande)</span>
@@ -1076,14 +1074,13 @@
     <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
         <img
             src="./assets/porções.png"
-            alt="especiais"
-            class="w-32 h-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            alt="Porções"
+            class="w-28 h-28 md:min-h-32 md:min-w-32 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
         />
         <div>
-            <p class="font-bold md:text-xl">Porções</p>
+            <p class="font-bold md:text-lg">Porções</p>
             <p class="text-sm md:text-base">
-                As porções são perfeitas para compartilhar! Preparadas com
-                ingredientes frescos e de qualidade, cada prato é uma explosão
+                As porções são perfeitas para compartilhar! Cada prato é uma explosão
                 de sabor e textura, ideal para complementar qualquer refeição.
             </p>
         </div>
@@ -1093,7 +1090,7 @@
         <!-- Porção de Mini Pasteis (4 un.) - Tradicionais -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Porção de Mini Pasteis (4 un.) - Tradicionais</p>
+                <p class="font-bold">Porção de Mini Pasteis (4 un.) - Tradicionais</p><p class="font-semibold">Até 2 sabores Tradicionais</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 19.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="19.00" data-name="Mini Pasteis Tradicionais (4 un.)">
@@ -1107,7 +1104,7 @@
         <!-- Porção de Mini Pasteis (4 un.) - Especiais/Gourmets -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Porção de Mini Pasteis (4 un.) - Especiais/Gourmets</p>
+                <p class="font-bold">Porção de Mini Pasteis (4 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 2 sabores Especiais/Gourmets</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 24.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="24.00" data-name="Mini Pasteis Especiais/Gourmets (4 un.)">
@@ -1121,7 +1118,7 @@
         <!-- Porção de Mini Pasteis (8 un.) - Tradicionais -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Porção de Mini Pasteis (8 un.) - Tradicionais</p>
+                <p class="font-bold">Porção de Mini Pasteis (8 un.) - Tradicionais</p><p class="font-semibold">Até 4 sabores Tradicionais</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 30.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="30.00" data-name="Mini Pasteis Tradicionais (8 un.)">
@@ -1135,7 +1132,7 @@
         <!-- Porção de Mini Pasteis (8 un.) - Especiais/Gourmets -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Porção de Mini Pasteis (8 un.) - Especiais/Gourmets</p>
+                <p class="font-bold">Porção de Mini Pasteis (8 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 4 sabores Especiais/Gourmets</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 37.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="37.00" data-name="Mini Pasteis Especiais/Gourmets (8 un.)">
@@ -1149,7 +1146,7 @@
         <!-- Bolinho de Feijão (5 un.) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Bolinho de Feijão (5 un.)</p>
+                <p class="font-bold">Bolinho de Feijão</p><p class="font-semibold">(5 un.)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 15.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="15.00" data-name="Bolinho de Feijão (5 un.)">
@@ -1163,7 +1160,7 @@
         <!-- Mini Pão de Queijo (10 un.) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Mini Pão de Queijo (10 un.)</p>
+                <p class="font-bold">Mini Pão de Queijo</p><p class="font-semibold">(10 un.)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 16.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="16.00" data-name="Mini Pão de Queijo (10 un.)">
@@ -1177,7 +1174,7 @@
         <!-- Raquete de Frango (500g) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Raquete de Frango (500g)</p>
+                <p class="font-bold">Raquete de Frango</p><p class="font-semibold">(500g)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 25.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="25.00" data-name="Raquete de Frango (500g)">
@@ -1191,7 +1188,7 @@
         <!-- Fritas (500g) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
-                <p class="font-bold">Fritas (500g)</p>
+                <p class="font-bold">Fritas</p><p class="font-semibold">(500g)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-lg">R$ 30.00</p>
                     <button class="px-5 py-1 rounded add-to-cart-btn" data-price="30.00" data-name="Fritas (500g)">
@@ -1215,7 +1212,7 @@
                         <div class="w-full">
                             <p class="font-bold">Caldo de Cana</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
-                                <div class="input-master flex items-center gap-2">
+                                <div class="input-master flex items-center gap-3">
                                     <label class="flex items-center space-x-2">
                                         <input type="radio" name="tamanho-caldo" value="G" class="custom-radio" checked>
                                         <span class="text-sm font-bold">R$ 12.00 (500ml)</span>

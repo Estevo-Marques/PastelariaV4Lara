@@ -160,7 +160,8 @@ function addToCart(name, price, size) {
 
 // Função para atualizar o contador de itens no carrinho
 function updateCartCounter() {
-    cartCounter.textContent = cart.length;
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCounter.textContent = totalQuantity;
 }
 
 // Função para atualizar o modal do carrinho
@@ -188,7 +189,7 @@ function updateCartModal() {
         total += item.price * item.quantity;
     });
 
-    cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+    cartTotal.textContent = `R$ ${total.toFixed(2)}`;
     addRemoveButtonListeners();
 }
 
@@ -226,13 +227,19 @@ checkoutBtn.addEventListener("click", function() {
     // Verificar se o restaurante está aberto
     if (!isOpen) {
         Toastify({
-            text: "O restaurante está fechado. Tente novamente mais tarde.",
+            text: "Ops, O restaurante está fechado!",
             duration: 3000,
-            gravity: "top", // 'top' ou 'bottom'
-            position: "right", // 'left', 'center' ou 'right'
-            backgroundColor: "red",
-            className: "toastify-error",
-        }).showToast();
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "#44BEBF",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
         return; // Impede o prosseguimento se o restaurante estiver fechado
     }
 
@@ -243,11 +250,29 @@ checkoutBtn.addEventListener("click", function() {
     } else {
         addressWarn.classList.add("hidden");
     }
+    if (cart.length === 0){
+        Toastify({
+            text: "Ops, Parece que seu carrinho está vazio!",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "#44BEBF",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
+        return; // Impede o prosseguimento se o restaurante estiver fechado
+    }
+
 
     // Formata a mensagem para o WhatsApp
     const message = cart.map(item => {
         const sizeText = item.size ? `(${item.size})` : '';
-        return `||*${item.name}* tamanho *${sizeText}* qtd: *${item.quantity}*||`;
+        return `*${item.name}* tamanho *${sizeText}* qtd: *${item.quantity}*`;
     }).join("%0A");
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
