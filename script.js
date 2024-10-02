@@ -58,6 +58,7 @@ const prices = {
         "Água c/ Gás": { "price": 4.00 },
         "Coca-Cola": { "price": 7.00 },
         "Coca-Cola Zero": { "price": 7.00 },
+        "Laranjinha": { "price": 7.00 },
         "Fanta Laranja": { "price": 7.00 },
         "Laranjinha": { "price": 7.00 },
         "Guaraná Zero": { "price": 7.00 },
