@@ -5,7 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-  
+      backgroundImage:{
+        "home": "url('/assets/bgg.png')"
+      }
     },
   },
   plugins: [],
