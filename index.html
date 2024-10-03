@@ -38,9 +38,9 @@
             text-align: center;
             box-shadow: 1px 1px 2px #888;
             z-index: 1000;
-            display: flex; /* Adiciona flexbox */
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verti */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
         }
         .fa-whatsapp {
             font-size: 35px;
@@ -54,20 +54,20 @@
         height: 420px;
         }
         body.overflow-hidden {
-            overflow: hidden; /* Desabilita o scroll */
+            overflow: hidden; 
         }
 
         .custom-radio {
-            width: 20px; /* Ajuste o tamanho conforme necessário */
-            height: 20px; /* Ajuste o tamanho conforme necessário */
+            width: 20px; 
+            height: 20px; 
             accent-color: #44BEBF;
             outline: none;
-            box-shadow: none; /* Remove o contorno */
-            appearance: none; /* Remove o estilo padrão */
-            -webkit-appearance: none; /* Remove o estilo padrão no Safari */
-            -moz-appearance: none; /* Remove o estilo padrão no Firefox */
-            border: 1px solid #000000; /* Adiciona uma borda personalizada */
-            border-radius: 50%; /* Faz a borda ser redonda */
+            box-shadow: none; 
+            appearance: none; 
+            -webkit-appearance: none; 
+            -moz-appearance: none; 
+            border: 1px solid #000000; 
+            border-radius: 50%;
             position: relative;
         }
 
@@ -76,7 +76,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-color: #91c7c7; /* Cor de fundo do input não selecionado */
+            background-color: #91c7c7; 
             border-radius: 50%;
         }
 
@@ -85,13 +85,13 @@
         }
         
         .custom-radio:checked::before {
-            background-color: #44BEBF; /* Cor de fundo do input selecionado */
-            content: '\f00c'; /* Código Unicode para o ícone de check */
-            font-family: 'Font Awesome 5 Free'; /* Certifique-se de que a fonte está correta */
-            font-weight: 900; /* Necessário para alguns ícones do Font Awesome */
-            text-align: center; /* Centraliza o ícone */
-            line-height: 1.6; /* Ajusta a posição vertical do ícone */
-            font-size: 12px; /* Ajuste o tamanho do ícone aqui */
+            background-color: #44BEBF; 
+            content: '\f00c'; 
+            font-family: 'Font Awesome 5 Free'; 
+            font-weight: 900; 
+            text-align: center; 
+            line-height: 1.6; 
+            font-size: 12px; 
             color: #000;
         }
 
@@ -104,26 +104,26 @@
             border: none;
         }
         .add-to-cart-btn {
-            transition: transform 0.2s; /* Transição suave */
+            transition: transform 0.2s;
         }
 
         .add-to-cart-btn.clicked {
-            transform: scale(1.2); /* Aumenta o tamanho do botão */
+            transform: scale(1.2); 
         }
         .cart-item {
-            padding: 10px; /* Adiciona um pouco de espaço interno */
+            padding: 10px; 
         }
 
         .border-b {
-            border-bottom: 1px solid #44BEBF; /* Cor da borda inferior, pode ser ajustada conforme necessário */
+            border-bottom: 1px solid #44BEBF; 
         }
 
         .pb-2 {
-            padding-bottom: 0.5rem; /* Adiciona espaço na parte inferior do item */
+            padding-bottom: 0.5rem; 
         }
 
         .mb-2 {
-            margin-bottom: 0.5rem; /* Adiciona margem inferior para separação */
+            margin-bottom: 0.5rem; 
         }
         
 
@@ -185,9 +185,7 @@
                 </div>
             </div>
         
-            <!--Tradicionais-->
             <div id="Tradicionais" class="grid grid-cols-1 md:grid-cols-2 gap-2  md:gap-10 mx-auto max-w-7xl px-2 mb-16">
-                <!--carne-->    
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Pastel de Carne</p>
@@ -210,9 +208,7 @@
                         </div>
                     </div>
                 </div>
-                <!--carne-->    
                 
-                <!-- Queijo -->    
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Pastel de Queijo</p>
@@ -235,9 +231,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Queijo -->
 
-                <!-- Frango -->    
                 <div class="flex gap-2 cart-item border-b border-gray-300  pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Pastel de Frango</p>
@@ -258,7 +252,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Frango -->
 
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
@@ -281,9 +274,7 @@
                         </div>
                     </div>
                 </div>
-                <!--Tradicionais-->
             </div>
-            <!--Especiais-->
                 <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
                     <img
                         src="./assets/especiais.png"
@@ -300,7 +291,6 @@
                 </div>
                 <div id="Especiais" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 
-                    <!-- Portuguesa (Carne, Ovo e Azeitona) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl inline">Portuguesa</p><p class="font-semibold inline"> (Carne, Ovo e Azeitona)</p>
@@ -323,9 +313,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Portuguesa (Carne, Ovo e Azeitona) -->
 
-                    <!-- Carne com Bacon -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Carne com Bacon</p>
@@ -348,9 +336,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Carne com Bacon -->
 
-                    <!-- Carne com Queijo -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Carne com Queijo</p>
@@ -373,9 +359,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Carne com Queijo -->
 
-                    <!-- Frango com Palmito -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Frango com Palmito</p>
@@ -398,9 +382,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Frango com Palmito -->
 
-                    <!-- Frango com Requeijão -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Frango com Requeijão</p>
@@ -423,9 +405,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Frango com Requeijão -->
 
-                    <!-- Frango com Calabresa -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Frango com Calabresa</p>
@@ -448,9 +428,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Frango com Calabresa -->
 
-                    <!-- Frango com Queijo -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Frango com Queijo</p>
@@ -473,9 +451,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Frango com Queijo -->
 
-                    <!-- Calabresa (Calabresa, Requeijão, Tomate e Orégano) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl inline">Calabresa</p><p class="font-semibold inline">, Requeijão, Tomate e Orégano</p>
@@ -498,9 +474,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Calabresa (Calabresa, Requeijão, Tomate e Orégano) -->
 
-                    <!-- Pastel De Pizza (Queijo, Presunto, Tomate e Orégano) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl inline">Pastel De Pizza</p><p class="font-semibold inline"> (Queijo, Presunto, Tomate e Orégano)</p>
@@ -523,9 +497,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Pastel De Pizza (Queijo, Presunto, Tomate e Orégano) -->
 
-                    <!-- Queijo com milho -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Queijo com Milho</p>
@@ -548,9 +520,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Queijo com milho -->
 
-                    <!-- Queijo com bacon -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Queijo com Bacon</p>
@@ -573,9 +543,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Queijo com bacon -->
 
-                    <!-- Queijo, Ovo, Tomate seco e Orégano -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Queijo, Ovo, Tomate seco e Orégano</p>
@@ -598,9 +566,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Queijo, Ovo, Tomate seco e Orégano -->
 
-                    <!-- Palmito c/ Alho Poró e Requeijao -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl">Palmito c/ Alho Poró e Requeijão</p>
@@ -623,9 +589,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Palmito c/ Alho Poró e Requeijao -->
 
-                    <!-- Brócolis (brocolis, milho e tomate seco) -->
                     <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                         <div class="w-full">
                             <p class="font-bold text-xl inline">Brócolis</p><p class="font-semibold inline"> (Brócolis, Milho e Tomate Seco)</p>
@@ -648,10 +612,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Brócolis (brocolis, milho e tomate seco) -->
-                <!--fim Especiais-->
                 </div>
-        <!-- Doces -->
         <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
             <img
                 src="./assets/doces.png"
@@ -672,7 +633,6 @@
 
 
 
-                <!-- Prestígio (Chocolate Preto com Coco) -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl inline">Prestígio</p><p class="font-semibold inline"> (Chocolate Preto com Coco)</p>
@@ -695,9 +655,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Prestígio (Chocolate Preto com Coco) -->
 
-                <!-- Chocolate Preto com Morango -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Chocolate Preto com Morango</p>
@@ -720,9 +678,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Chocolate Preto com Morango -->
 
-                <!-- Chocolate Branco com Morango -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Chocolate Branco com Morango</p>
@@ -745,9 +701,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Chocolate Branco com Morango -->
 
-                <!-- Chocolate Preto e Branco -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Chocolate Preto e Branco</p>
@@ -770,9 +724,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Chocolate Preto e Branco -->
 
-                <!-- Romeu e Julieta (Goiabada com Queijo) -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl inline">Romeu e Julieta</p><p class="font-semibold inline"> (Goiabada com Queijo)</p>
@@ -795,9 +747,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Romeu e Julieta (Goiabada com Queijo) -->
 
-                <!-- Banana com Chocolate Preto -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Banana com Chocolate Preto</p>
@@ -820,9 +770,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Banana com Chocolate Preto -->
 
-                <!-- Banana com Chocolate Branco -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Banana com Chocolate Branco</p>
@@ -845,9 +793,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Banana com Chocolate Branco -->
 
-                <!-- Banoffee (Banana, Doce de Leite e Canela, Polvilhado no Açúcar e Canela) -->
                 <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl inline">Banoffee</p><p class="font-semibold inline"> (Banana, Doce de Leite e Canela)</p>
@@ -870,10 +816,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Banoffee (Banana, Doce de Leite e Canela, Polvilhado no Açúcar e Canela) -->
-        <!-- fim Doces -->
         </div>
-        <!--GOURMETS-->
         <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
             <img
                 src="./assets/gourmets.png"
@@ -889,7 +832,6 @@
             </div>
         </div>
         <div id="Doces" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
-            <!-- Berbigão -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Berbigão</p>
@@ -912,9 +854,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Berbigão -->
 
-            <!-- Camarão -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Camarão</p>
@@ -937,9 +877,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Camarão -->
 
-            <!-- Camarão com Requeijão -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Camarão com Requeijão</p>
@@ -962,9 +900,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Camarão com Requeijão -->
 
-            <!-- Camarão com Palmito -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Camarão com Palmito</p>
@@ -987,9 +923,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Camarão com Palmito -->
 
-            <!-- Linguiça Blumenau (Linguiça Blumenau, Requeijão e Vinagrete) -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl inline">Linguiça Blumenau</p><p class="font-semibold inline">, Requeijão e Vinagrete</p>
@@ -1012,9 +946,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Linguiça Blumenau (Linguiça, Requeijão e Vinagrete) -->
 
-            <!-- Quatro Queijos (Mussarela, Parmesão, Gorgonzola e Cheddar) -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Quatro Queijos</p>
@@ -1037,9 +969,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Quatro Queijos (Mussarela, Parmesão, Gorgonzola e Cheddar) -->
 
-            <!-- Paçoca de Pinhão -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Paçoca de Pinhão</p>
@@ -1062,9 +992,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Paçoca de Pinhão -->
 
-            <!-- Siri -->
             <div class="flex gap-2 cart-item border-b border-gray-300 pb-4">
                 <div class="w-full">
                     <p class="font-bold text-xl">Siri</p>
@@ -1087,10 +1015,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Siri -->
-            <!--FIM GOURMETS-->
         </div>
-        <!--Porções-->
 
     <div class="flex justify-center items-center gap-4 md:gap-8 mx-auto max-w-7xl px-2 mb-16">
         <img
@@ -1108,7 +1033,6 @@
     </div>
     <div id="porções" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 
-        <!-- Porção de Mini Pasteis (4 un.) - Tradicionais -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Porção de Mini Pasteis (4 un.) - Tradicionais</p><p class="font-semibold">Até 2 sabores Tradicionais</p>
@@ -1120,9 +1044,7 @@
                 </div>
             </div>
         </div>
-        <!-- Porção de Mini Pasteis (4 un.) - Tradicionais -->
 
-        <!-- Porção de Mini Pasteis (4 un.) - Especiais/Gourmets -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Porção de Mini Pasteis (4 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 2 sabores Especiais/Gourmets</p>
@@ -1134,9 +1056,7 @@
                 </div>
             </div>
         </div>
-        <!-- Porção de Mini Pasteis (4 un.) - Especiais/Gourmets -->
 
-        <!-- Porção de Mini Pasteis (8 un.) - Tradicionais -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Porção de Mini Pasteis (8 un.) - Tradicionais</p><p class="font-semibold">Até 4 sabores Tradicionais</p>
@@ -1148,9 +1068,7 @@
                 </div>
             </div>
         </div>
-        <!-- Porção de Mini Pasteis (8 un.) - Tradicionais -->
 
-        <!-- Porção de Mini Pasteis (8 un.) - Especiais/Gourmets -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Porção de Mini Pasteis (8 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 4 sabores Especiais/Gourmets</p>
@@ -1162,9 +1080,7 @@
                 </div>
             </div>
         </div>
-        <!-- Porção de Mini Pasteis (8 un.) - Especiais/Gourmets -->
 
-        <!-- Bolinho de Feijão (5 un.) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Bolinho de Feijão</p><p class="font-semibold">(5 un.)</p>
@@ -1176,9 +1092,7 @@
                 </div>
             </div>
         </div>
-        <!-- Bolinho de Feijão (5 un.) -->
 
-        <!-- Mini Pão de Queijo (10 un.) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Mini Pão de Queijo</p><p class="font-semibold">(10 un.)</p>
@@ -1190,9 +1104,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mini Pão de Queijo (10 un.) -->
 
-        <!-- Raquete de Frango (500g) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Raquete de Frango</p><p class="font-semibold">(500g)</p>
@@ -1204,9 +1116,7 @@
                 </div>
             </div>
         </div>
-        <!-- Raquete de Frango (500g) -->
 
-        <!-- Fritas (500g) -->
         <div class="flex gap-2 border-b border-gray-300 pb-4">
             <div class="w-full">
                 <p class="font-bold text-xl">Fritas</p><p class="font-semibold">(500g)</p>
@@ -1218,16 +1128,12 @@
                 </div>
             </div>
         </div>
-        <!-- Fritas (500g) -->
 
 
-        <!--Fim Porções-->
     </div>
-        <!--bebidas-->
         <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">Bebidas</h2>
         <div id="porções" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
                     
-                    <!-- Caldo de Cana -->
                     <div class="flex gap-2 border-b cart-item border-gray-300 pb-4">
                         <img src="./assets/caldo-de-cana.png" alt="Caldo de Cana" class="w-28 h-28  rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1249,8 +1155,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Caldo de Cana -->
-                    <!-- Caipirinha -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/caipirinha.png" alt="Caipirinha" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1263,10 +1167,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Caipirinha -->
                     
 
-                    <!-- Água s/ Gás -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/agua.png" alt="Água s/ Gás" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1279,9 +1181,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Água s/ Gás -->
                     
-                    <!-- Água c/ Gás -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/agua-com-gas.png" alt="Água c/ Gás" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1294,9 +1194,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Água c/ Gás -->
                     
-                    <!-- Coca-Cola -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/coca-cola.png" alt="Coca-Cola" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1309,10 +1207,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Coca-Cola -->
                     
                     
-                    <!-- Coca-Cola Zero -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/coca-cola-0.png" alt="Coca-Cola Zero" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1325,9 +1221,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Coca-Cola Zero -->
                     
-                    <!-- laranjinha -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/laranjinha.png" alt="laranjinha" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1340,9 +1234,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- laranjinha -->
                      
-                    <!-- Pepsi -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/pepsi.png" alt="Pepsi" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1355,9 +1247,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Pepsi -->
                     
-                    <!-- Schweppes -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/schweppes.png" alt="Schweppes" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1370,9 +1260,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Schweppes -->
                     
-                    <!-- Fanta Laranja -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/fanta-laranja.png" alt="Fanta Laranja" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1385,9 +1273,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Fanta Laranja -->
                     
-                    <!-- Guaraná -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/guarana-normal.png" alt="Guaraná" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1400,9 +1286,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Guaraná -->
                     
-                    <!-- Guaraná Zero -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/guarana.png" alt="Guaraná Zero" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1415,9 +1299,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Guaraná Zero -->
                     
-                    <!-- Chocoleite -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/chocoleite.png" alt="Chocoleite" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1430,9 +1312,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Chocoleite -->
                     
-                    <!-- Ice Tea Limão -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/icetea-limao.png" alt="Ice Tea Limão" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1445,9 +1325,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Ice Tea Limão -->
                     
-                    <!-- Ice Tea Pêssego -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/icetea-pessego.png" alt="Ice Tea Pêssego" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1460,9 +1338,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Ice Tea Pêssego -->
                     
-                    <!-- Del Valle Pêssego -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/dell-pessego.png" alt="Del Valle Pêssego" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1475,9 +1351,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Del Valle Pêssego -->
                     
-                    <!-- Del Valle Uva -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/dell-uva.png" alt="Del Valle Uva" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1490,9 +1364,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Del Valle Uva -->
                     
-                    <!-- Amstel Lata -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/amstel-lata.png" alt="Amstel Lata" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1505,9 +1377,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Amstel Lata -->
                     
-                    <!-- Brahma Lata -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/brahma-lata.png" alt="Brahma Lata" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1520,9 +1390,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Brahma Lata -->
                     
-                    <!-- Heineken Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/heineken-long.png" alt="Heineken Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1535,9 +1403,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Heineken Long Neck -->
                     
-                    <!-- Heineken Long Neck Zero -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/heineken-long-0.png" alt="Heineken Long Neck Zero" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1550,9 +1416,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Heineken Long Neck Zero -->
                     
-                    <!-- Amstel Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/amstel-long.png" alt="Amstel Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1565,9 +1429,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Amstel Long Neck -->
                     
-                    <!-- Amstel Ultra Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/amstel-ultra-long.png" alt="Amstel Ultra Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1580,9 +1442,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Amstel Ultra Long Neck -->
                     
-                    <!-- Eisenbahn Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/eisenbahn-long.png" alt="Eisenbahn Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1595,9 +1455,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Eisenbahn Long Neck -->
                     
-                    <!-- Michelob Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/michelob-long.png" alt="Michelob Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1610,9 +1468,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Michelob Long Neck -->
                     
-                    <!-- Sol Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/sol-long.png" alt="Sol Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1625,9 +1481,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Sol Long Neck  -->
                     
-                    <!-- Stella Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/stella-long.png" alt="Stella Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">
@@ -1640,9 +1494,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Stella Long Neck -->
                     
-                    <!-- Budweiser Long Neck -->
                     <div class="flex gap-2 border-b border-gray-300 pb-4">
                         <img src="./assets/budweiser-long.png" alt="Budweiser Long Neck" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
                         <div class="w-full">

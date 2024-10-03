@@ -13,7 +13,7 @@ const whatsLink = document.querySelector(".whats-link");
 
 let cart = [];
 
-// Preços dos itens
+
 const prices = {
     "Tradicionais": {
         "Caldo de Cana": { "P": 10.00, "G": 12.00 },
@@ -93,12 +93,12 @@ const prices = {
     }
 };
 
-// Quando o DOM estiver carregado
+
 document.addEventListener("DOMContentLoaded", function() {
     whatsLink.classList.remove("hidden");
 });
 
-// Ação ao clicar no botão do carrinho
+
 cartBtn.addEventListener("click", function() {
     updateCartModal();
     cartModal.style.display = "flex";
@@ -106,7 +106,7 @@ cartBtn.addEventListener("click", function() {
     document.body.classList.add("overflow-hidden");
 });
 
-// Ação ao clicar fora do modal do carrinho
+
 cartModal.addEventListener("click", function(event) {
     if (event.target === cartModal) {
         closeCartModal();
@@ -114,17 +114,17 @@ cartModal.addEventListener("click", function(event) {
     }
 });
 
-// Ação ao fechar o modal do carrinho
+
 closeModalBtn.addEventListener("click", closeCartModal);
 
-// Função para fechar o modal do carrinho
+
 function closeCartModal() {
     cartModal.style.display = "none";
     whatsLink.classList.remove("hidden");
     document.body.classList.remove("overflow-hidden");
 }
 
-// Ação ao clicar nos itens do menu
+
 menu.addEventListener("click", function(event) {
     let parentButton = event.target.closest(".add-to-cart-btn");
     if (parentButton) {
@@ -148,7 +148,7 @@ menu.addEventListener("click", function(event) {
     }
 });
 
-// Função para adicionar item ao carrinho
+
 function addToCart(name, price, size) {
     const existingItem = cart.find(item => item.name === name && item.size === size);
     if (existingItem) {
@@ -159,13 +159,13 @@ function addToCart(name, price, size) {
     updateCartCounter();
 }
 
-// Função para atualizar o contador de itens no carrinho
+
 function updateCartCounter() {
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCounter.textContent = totalQuantity;
 }
 
-// Função para atualizar o modal do carrinho
+
 function updateCartModal() {
     cartItemsContainer.innerHTML = "";
     let total = 0;
@@ -194,7 +194,7 @@ function updateCartModal() {
     addRemoveButtonListeners();
 }
 
-// Função para adicionar listeners aos botões de remoção
+
 function addRemoveButtonListeners() {
     const removeButtons = document.querySelectorAll('.remove-from-cart-btn');
     removeButtons.forEach(button => {
@@ -206,7 +206,6 @@ function addRemoveButtonListeners() {
     });
 }
 
-// Função para remover item do carrinho
 function removeFromCart(name, size) {
     const itemIndex = cart.findIndex(item => item.name === name && item.size === size);
     if (itemIndex > -1) {
@@ -225,7 +224,7 @@ checkoutBtn.addEventListener("click", function() {
     const address = addressInput.value.trim();
     const isOpen = checkRestauranteOpen();
 
-    // Verificar se o restaurante está aberto
+   
     if (!isOpen) {
         Toastify({
             text: "Ops, O restaurante está fechado!",
@@ -239,9 +238,9 @@ checkoutBtn.addEventListener("click", function() {
             style: {
               background: "#44BEBF",
             },
-            onClick: function(){} // Callback after click
+            onClick: function(){} 
           }).showToast();
-        return; // Impede o prosseguimento se o restaurante estiver fechado
+        return; 
     }
 
     // Verifica se o endereço foi preenchido
@@ -264,13 +263,13 @@ checkoutBtn.addEventListener("click", function() {
             style: {
               background: "#44BEBF",
             },
-            onClick: function(){} // Callback after click
+            onClick: function(){} 
           }).showToast();
-        return; // Impede o prosseguimento se o restaurante estiver fechado
+        return; 
     }
 
 
-    // Formata a mensagem para o WhatsApp
+    
     const message = cart.map(item => {
         const sizeText = item.size ? `(${item.size})` : '';
         return `*${item.name}* tamanho *${sizeText}* qtd: *${item.quantity}*`;
@@ -279,13 +278,13 @@ checkoutBtn.addEventListener("click", function() {
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const finalMessage = `*Pedido*%0A${message}%0A*Total:* R$ ${total.toFixed(2)}%0A*Endereço:* ${address}`;
 
-    // Gera o link do WhatsApp
+   
     const whatsappLink = `https://api.whatsapp.com/send?phone=5547996870409&text=${finalMessage}`;
     window.open(whatsappLink);
 });
 
 
-// Adiciona um listener de entrada ao campo de endereço
+
 addressInput.addEventListener("input", function() {
     if (!addressWarn.classList.contains("hidden")) {
         addressWarn.classList.add("hidden");
