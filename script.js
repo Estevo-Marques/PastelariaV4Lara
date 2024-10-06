@@ -61,7 +61,7 @@ const prices = {
         "Siri": { "P": 15.00, "G": 24.00 },
     },
     "Bebidas": {
-        "Água s/ Gás": { "price": 4.00, "P": null, "G": null },
+        "Água s/ Gás": { "price": 4.00, },
         "Água c/ Gás": { "price": 4.00 },
         "Coca-Cola": { "price": 7.00 },
         "Coca-Cola Zero": { "price": 7.00 },
@@ -251,14 +251,14 @@ function addQuantityButtonListeners() {
     });
 }
 
-
 function changeCartItemQuantity(name, size, amount, comment = "") {
     // Normalizando o comentário para evitar problemas de comparação
     comment = comment.trim().toLowerCase(); // Remover espaços extras e transformar em lowercase
 
+    // Encontrando o item baseado no nome, tamanho (se aplicável), e comentário
     const item = cart.find(item => 
         item.name === name && 
-        item.size === size && 
+        (!size || item.size === size) &&  // Verificação ajustada para itens sem tamanho
         (item.comment?.trim().toLowerCase() === comment)
     );
 
