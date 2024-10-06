@@ -64,7 +64,7 @@ const prices = {
         "Siri": { "P": 15.00, "G": 24.00 },
     },
     "Bebidas": {
-        "Água s/ Gás": { "price": 4.00 },
+        "Água s/ Gás": { "price": 4.00, },
         "Água c/ Gás": { "price": 4.00 },
         "Coca-Cola": { "price": 7.00 },
         "Coca-Cola Zero": { "price": 7.00 },
