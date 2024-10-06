@@ -7,7 +7,7 @@ const elements = {
     cartTotal: document.getElementById("cart-total"),
     closeModalBtn: document.getElementById("close-modal-btn"),
     cartCounter: document.getElementById("cart-count"),
-    
+    whatsLink: document.querySelector(".whats-link"),
     commentModal: document.getElementById("comment-modal"),
     commentInput: document.getElementById("comment-input"),
     confirmAddToCartBtn: document.getElementById("confirm-add-to-cart-btn"),
@@ -17,7 +17,6 @@ const elements = {
 
 const addressWarn = document.getElementById("address-warn");
 const addressInput = document.getElementById("address");
-const whatsLink = document.querySelector(".whats-link");
 const checkoutBtn = document.getElementById("checkout-btn");
 
 let cart = [];
