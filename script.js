@@ -1,26 +1,29 @@
 // Selecionando elementos do DOM
-const menu = document.getElementById("menu");
-const cartBtn = document.getElementById("cart-bnt");
-const cartModal = document.getElementById("cart-modal");
-const cartItemsContainer = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
-const checkoutBtn = document.getElementById("checkout-btn");
-const closeModalBtn = document.getElementById("close-modal-btn");
-const cartCounter = document.getElementById("cart-count");
+const elements = {
+    menu: document.getElementById("menu"),
+    cartBtn: document.getElementById("cart-bnt"),
+    cartModal: document.getElementById("cart-modal"),
+    cartItemsContainer: document.getElementById("cart-items"),
+    cartTotal: document.getElementById("cart-total"),
+    closeModalBtn: document.getElementById("close-modal-btn"),
+    cartCounter: document.getElementById("cart-count"),
+    
+    commentModal: document.getElementById("comment-modal"),
+    commentInput: document.getElementById("comment-input"),
+    confirmAddToCartBtn: document.getElementById("confirm-add-to-cart-btn"),
+    cancelAddToCartBtn: document.getElementById("cancel-add-to-cart-btn"),
+    closeCommentModalBtn: document.getElementById("close-comment-modal"),
+};
+
 const addressWarn = document.getElementById("address-warn");
 const addressInput = document.getElementById("address");
 const whatsLink = document.querySelector(".whats-link");
-const commentModal = document.getElementById("comment-modal");
-const commentInput = document.getElementById("comment-input");
-const confirmAddToCartBtn = document.getElementById("confirm-add-to-cart-btn");
-const cancelAddToCartBtn = document.getElementById("cancel-add-to-cart-btn");
-const closeCommentModalBtn = document.getElementById("close-comment-modal");
+const checkoutBtn = document.getElementById("checkout-btn");
 
 let cart = [];
-let selectedItemName;
-let selectedItemPrice;
-let selectedItemSize;
+let selectedItem = { name: null, price: null, size: null };
 
+// Lista de preços
 const prices = {
     "Tradicionais": {
         "Caldo de Cana": { "P": 10.00, "G": 12.00 },
@@ -102,211 +105,170 @@ const prices = {
     },
 };
 
-// Carregando o DOM
-document.addEventListener("DOMContentLoaded", function() {
-    whatsLink.classList.remove("hidden");
-});
+// Carrega o DOM
+document.addEventListener("DOMContentLoaded", () => elements.whatsLink.classList.remove("hidden"));
 
 // Abrir modal do carrinho
-cartBtn.addEventListener("click", function() {
+elements.cartBtn.addEventListener("click", () => {
     updateCartModal();
-    cartModal.style.display = "flex";
-    whatsLink.classList.add("hidden");
-    document.body.classList.add("overflow-hidden");
+    elements.cartModal.style.display = "flex";
+    toggleWhatsLink(true);
 });
-
 
 // Fechar o modal do carrinho
-cartModal.addEventListener("click", function(event) {
-    if (event.target === cartModal) {
-        closeCartModal();
-        document.body.classList.remove("overflow-hidden");
-    }
-});
-
-closeModalBtn.addEventListener("click", closeCartModal);
+[elements.cartModal, elements.closeModalBtn].forEach(el =>
+    el.addEventListener("click", (e) => {
+        if (e.target === elements.cartModal || e.target === elements.closeModalBtn) closeCartModal();
+    })
+);
 
 function closeCartModal() {
-    cartModal.style.display = "none";
-    whatsLink.classList.remove("hidden");
-    document.body.classList.remove("overflow-hidden");
+    elements.cartModal.style.display = "none";
+    toggleWhatsLink(false);
 }
 
-// Evento de clique no botão "Add to Cart"
-menu.addEventListener("click", function(event) {
-    const parentButton = event.target.closest(".add-to-cart-btn");
-    if (parentButton) {
-        selectedItemName = parentButton.getAttribute("data-name");
-        let price;
-        let size;
+// Adicionar item ao carrinho
+elements.menu.addEventListener("click", (event) => {
+    const btn = event.target.closest(".add-to-cart-btn");
+    if (!btn) return;
 
-        if (prices["Bebidas"][selectedItemName]){ 
-            price = prices["Bebidas"][selectedItemName]["price"];
-            size = null;
+    const itemName = btn.getAttribute("data-name");
+    const item = prices.Tradicionais[itemName] || prices.Bebidas[itemName] || prices.Porções[itemName];
+    
+    if (!item) return;
 
-            // Adiciona a bebida diretamente ao carrinho
-            addToCart(selectedItemName, price, size, null);
-            return; // Sai da função para não abrir o modal
-        }if (prices["Porções"][selectedItemName]) {
-            price = prices["Porções"][selectedItemName]["price"];
-            size = null;
+    selectedItem.name = itemName;
 
-            commentModal.classList.remove("hidden");
-            document.body.classList.add("overflow-hidden");
-        } else if (prices["Tradicionais"][selectedItemName]) {
-            size = parentButton.closest('.cart-item').querySelector('input[type="radio"]:checked')?.value;
-            if (size) {
-                price = prices["Tradicionais"][selectedItemName][size];
-            }
-        }
-
-        if (price !== undefined) {
-            selectedItemPrice = price;
-            selectedItemSize = size;
-
-            // Abre o modal para adicionar observações
-            commentModal.classList.remove("hidden");
-            document.body.classList.add("overflow-hidden");
+    // Verifica se é um item de Bebidas ou Porções, que não têm tamanho
+    if (prices.Bebidas[itemName]) {
+        // Adiciona bebida diretamente ao carrinho
+        addToCart(itemName, item.price);
+    } else if (prices.Porções[itemName]) {
+        // Para Porções, abrir o modal de comentário
+        selectedItem.price = item.price;
+        openCommentModal(); // Abre o modal de comentários para porções
+    } else {
+        // Para Tradicionais, verificar se o tamanho foi selecionado
+        selectedItem.size = btn.closest('.cart-item').querySelector('input[type="radio"]:checked')?.value;
+        if (selectedItem.size) {
+            selectedItem.price = item[selectedItem.size];
+            openCommentModal(); // Abre o modal de comentários para Tradicionais
         }
     }
 });
 
-//asdasdasdasdasd
 
-
-
-// Fechar o modal de comentários
-closeCommentModalBtn.addEventListener("click", closeCommentModal);
-cancelAddToCartBtn.addEventListener("click", closeCommentModal);
-
-// Função para fechar o modal
-function closeCommentModal() {
-    commentModal.classList.add("hidden");
-    document.body.classList.remove("overflow-hidden");
-    commentInput.value = ""; // Limpa o campo de texto
-}
-
-// Adiciona item ao carrinho com observação
-confirmAddToCartBtn.addEventListener("click", function() {
-    const comment = commentInput.value.trim();
-    addToCart(selectedItemName, selectedItemPrice, selectedItemSize, comment);
+elements.confirmAddToCartBtn.addEventListener("click", () => {
+    const comment = elements.commentInput.value.trim();
+    addToCart(selectedItem.name, selectedItem.price, selectedItem.size, comment, quantityModal); // Use quantityModal diretamente
     closeCommentModal();
+    quantityModal = 1;  // Reinicia a quantidade para o valor padrão
+    updateQuantityDisplayModal();  // Atualiza o display de quantidade
 });
 
 
-// Adiciona item ao carrinho
-function addToCart(name, price, size, comment) {
-    // Verifica se o item já existe no carrinho
+// Fechar modal de comentário
+[elements.closeCommentModalBtn, elements.cancelAddToCartBtn].forEach(btn =>
+    btn.addEventListener("click", closeCommentModal)
+);
+
+function addToCart(name, price, size = null, comment = "", quantity = 1) {
+    // Certifique-se de que a quantidade é sempre maior que zero
+    if (quantity <= 0) return;
+
     const existingItem = cart.find(item => item.name === name && item.size === size && item.comment === comment);
     if (existingItem) {
-        // Se existir, aumenta a quantidade
-        existingItem.quantity += 1;
+        existingItem.quantity += quantity; // Adiciona a quantidade selecionada
     } else {
-        // Se não existir, adiciona novo item
-        cart.push({ name, price: parseFloat(price), quantity: 1, size, comment });
+        cart.push({ name, price: parseFloat(price), quantity: quantity, size, comment });
     }
     updateCartCounter();
 }
 
 
-// Atualiza o contador do carrinho
+
 function updateCartCounter() {
-    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCounter.textContent = totalQuantity;
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    elements.cartCounter.textContent = totalItems;
 }
 
-// Atualiza o modal do carrinho
 function updateCartModal() {
-    cartItemsContainer.innerHTML = "";
+    elements.cartItemsContainer.innerHTML = "";
     let total = 0;
 
-    
+    cart.forEach(item => {
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item flex items-center justify-between";
+        const sizeText = item.size ? `(${item.size})` : '';
+        const commentText = item.comment ? `Observação: ${item.comment}` : '';
 
-    cartTotal.textContent = `R$ ${total.toFixed(2)}`;
-    addRemoveButtonListeners();
-    addQuantityButtonListeners(); // Adiciona os ouvintes para os botões de quantidade
+        cartItem.innerHTML = `
+            <div>
+                <p>${item.name} ${sizeText}</p>
+                <p>${commentText}</p>
+                <p>R$ ${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+            <div class="flex items-center">
+                <button class="decrease-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-minus"></i></button>
+                <span>Qtd: ${item.quantity}</span>
+                <button class="increase-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-plus"></i></button>
+            </div>
+        `;
+        elements.cartItemsContainer.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+
+    elements.cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+    addQuantityButtonListeners();
 }
-
 
 function addQuantityButtonListeners() {
-    const increaseButtons = document.querySelectorAll('.increase-quantity-btn');
-    const decreaseButtons = document.querySelectorAll('.decrease-quantity-btn');
-
-    increaseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const name = this.getAttribute('data-name');
-            const size = this.getAttribute('data-size') || null;
-            const comment = this.getAttribute('data-comment') || ''; // Pegando o comentário
-            changeCartItemQuantity(name, size, 1, comment); // Passando o comentário
-        });
-    });
-
-    decreaseButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const name = this.getAttribute('data-name');
-            const size = this.getAttribute('data-size') || null;
-            const comment = this.getAttribute('data-comment') || ''; // Pegando o comentário
-            changeCartItemQuantity(name, size, -1, comment); // Passando o comentário
-        });
-    });
+    document.querySelectorAll(".increase-quantity-btn, .decrease-quantity-btn").forEach(btn =>
+        btn.addEventListener("click", function() {
+            const name = this.getAttribute("data-name");
+            const size = this.getAttribute("data-size") || null;
+            const comment = this.getAttribute("data-comment") || '';
+            const change = this.classList.contains("increase-quantity-btn") ? 1 : -1;
+            changeCartItemQuantity(name, size, change, comment);
+        })
+    );
 }
-
 
 function changeCartItemQuantity(name, size, amount, comment = "") {
-    // Normalizando o comentário para evitar problemas de comparação
-    comment = comment.trim().toLowerCase(); // Remover espaços extras e transformar em lowercase
-
-    const item = cart.find(item => 
-        item.name === name && 
-        item.size === size && 
-        (item.comment?.trim().toLowerCase() === comment)
-    );
-
+    const item = cart.find(i => i.name === name && i.size === size && i.comment === comment.trim());
     if (item) {
         item.quantity += amount;
-
-        // Se a quantidade chegar a 0, remover o item do carrinho
-        if (item.quantity <= 0) {
-            removeFromCart(name, size, comment);
-        } else {
-            updateCartCounter();
-            updateCartModal();
-        }
-    }
-}
-
-
-
-
-
-// Adiciona ouvintes para botões de remoção
-function addRemoveButtonListeners() {
-    const removeButtons = document.querySelectorAll('.remove-from-cart-btn');
-    removeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const name = this.getAttribute('data-name');
-            const size = this.getAttribute('data-size') || null;
-            removeFromCart(name, size);
-        });
-    });
-}
-
-// Remove item do carrinho
-function removeFromCart(name, size) {
-    const itemIndex = cart.findIndex(item => item.name === name && item.size === size);
-    if (itemIndex > -1) {
-        const item = cart[itemIndex];
-        if (item.quantity > 1) {
-            item.quantity -= 1;
-        } else {
-            cart.splice(itemIndex, 1);
-        }
+        if (item.quantity <= 0) removeFromCart(name, size, comment);
         updateCartCounter();
         updateCartModal();
     }
 }
 
-// Checkout
+function removeFromCart(name, size, comment = "") {
+    cart = cart.filter(item => !(item.name === name && item.size === size && item.comment === comment.trim()));
+    updateCartCounter();
+    updateCartModal();
+}
+
+function openCommentModal() {
+    elements.commentModal.classList.remove("hidden");
+    document.body.classList.add("overflow-hidden");
+}
+
+function closeCommentModal() {
+    elements.commentModal.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
+    elements.commentInput.value = "";
+}
+
+function toggleWhatsLink(hide) {
+    elements.whatsLink.classList.toggle("hidden", hide);
+}
+
+
+
+
+
 checkoutBtn.addEventListener("click", function() {
     const address = addressInput.value.trim();
     const isOpen = checkRestauranteOpen();
@@ -344,10 +306,6 @@ checkoutBtn.addEventListener("click", function() {
     const whatsappLink = `https://api.whatsapp.com/send?phone=5547996870409&text=${finalMessage}`;
     window.open(whatsappLink);
 });
-
-//asdasdasdasdasdasda
-
-
 // Função para exibir mensagens de aviso
 function showToast(text) {
     Toastify({
@@ -385,69 +343,34 @@ if (isOpen) {
     spanItem.classList.remove("bg-green-600");
     spanItem.classList.add("bg-red-500");
 }
-function updateCartModal() {
-    cartItemsContainer.innerHTML = "";
-    let total = 0;
 
-    cart.forEach(item => { 
-        const cartItem = document.createElement("div");
-        cartItem.className = "cart-item flex items-center justify-between"; // Certifique-se que 'cart-item' tenha display flex
-        
-        const sizeText = item.size ? `(${item.size})` : '';
-        const commentText = item.comment ? `Observação: ${item.comment}` : '';
-    
-        // Verifica se a quantidade é 1, se for, usa o ícone de lixeira
-        const decreaseButtonHTML = item.quantity === 1 
-            ? `<button class="remove-from-cart-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}">
-                <i class="fas fa-trash-alt"></i>
-               </button>`
-            : `<button class="decrease-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-minus"></i></button>`;
-    
-        // Definindo o conteúdo do item do carrinho
-        cartItem.innerHTML = `
-        <div>
-            <p class="font-medium">${item.name} ${sizeText}</p>
-            <p>${commentText}</p>
-            <p class="font-medium mt-2 border-gray-300 pb-4">R$ ${(item.price * item.quantity).toFixed(2)}</p>
-        </div>
-        <div class="flex items-center justify-end space-x-2 ml-auto">
-            ${decreaseButtonHTML}
-            <span>Qtd: ${item.quantity}</span>
-            <button class="increase-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}">
-                <i class="fas fa-plus"></i>
-            </button>
-        </div>
-        `;
-        
-        cartItemsContainer.appendChild(cartItem);
-        total += item.price * item.quantity;
-    });
-    
 
-    cartTotal.textContent = `R$ ${total.toFixed(2)}`;
-    addRemoveButtonListeners();
-    addQuantityButtonListeners();
+
+let quantityModal = 1; // Quantidade inicial
+
+// Atualiza a exibição da quantidade
+function updateQuantityDisplayModal() {
+    document.getElementById('quantity-display-modal').textContent = quantityModal;
 }
-function addRemoveButtonListeners() {
-    const removeButtons = document.querySelectorAll('.remove-from-cart-btn');
 
-    removeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const name = this.getAttribute('data-name');
-            const size = this.getAttribute('data-size') || null;
-            const comment = this.getAttribute('data-comment') || ''; // Pegando o comentário
-            removeFromCart(name, size, comment); // Função para remover o item do carrinho
-        });
-    });
-}
-function removeFromCart(name, size, comment = "") {
-    comment = comment.trim().toLowerCase();
+// Botões de incremento e decremento de quantidade no modal
+document.getElementById('increase-quantity-modal-btn').addEventListener('click', () => {
+    quantityModal++;
+    updateQuantityDisplayModal();
+});
 
-    // Filtra o carrinho para remover o item correspondente
-    cart = cart.filter(item => 
-        !(item.name === name && item.size === size && (item.comment?.trim().toLowerCase() === comment))
-    );
+document.getElementById('decrease-quantity-modal-btn').addEventListener('click', () => {
+    if (quantityModal > 1) {
+        quantityModal--;
+        updateQuantityDisplayModal();
+    }
+});
 
-    updateCartCounter();
-    updateCartModal();
-}
+// Quando o usuário confirmar, a quantidade selecionada será adicionada ao carrinho
+elements.confirmAddToCartBtn.addEventListener("click", () => {
+    const comment = elements.commentInput.value.trim();
+    addToCart(selectedItem.name, selectedItem.price, selectedItem.size, comment, quantityModal - 1);  // Passando a quantidade
+    closeCommentModal();
+    quantityModal = 1;  // Reinicia a quantidade para o valor padrão
+    updateQuantityDisplayModal();  // Atualiza o display de quantidade
+});

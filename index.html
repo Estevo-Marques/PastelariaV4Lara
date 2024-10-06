@@ -1598,19 +1598,29 @@
 </footer>
         
 
-<!-- Modal para Adicionar Comentários -->
 <div id="comment-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
     <div class="bg-white rounded-lg shadow-lg p-6 w-11/12 max-w-md">
         <span id="close-comment-modal" class="cursor-pointer text-gray-500 float-right text-2xl">&times;</span>
         <h2 class="text-lg font-semibold mb-4">Adicionar Observação</h2>
-        <textarea id="comment-input" rows="4" class="w-full border border-gray-300 rounded-md p-2" placeholder="Digite suas observações aqui..."></textarea>
         
+        <!-- Campo para observações -->
+        <textarea id="comment-input" rows="4" class="w-full border border-gray-300 rounded-md p-2" placeholder="Digite suas observações aqui..."></textarea>
+
+        <!-- Botões de quantidade -->
+        <div class="mt-4 flex items-center justify-between">
+            <button id="decrease-quantity-modal-btn" class="bg-gray-300 text-gray-700 rounded-md px-4 py-2 hover:bg-gray-400">-</button>
+            <span id="quantity-display-modal">1</span>
+            <button id="increase-quantity-modal-btn" class="bg-gray-300 text-gray-700 rounded-md px-4 py-2 hover:bg-gray-400">+</button>
+        </div>
+
+        <!-- Botões para adicionar ao carrinho ou cancelar -->
         <div class="mt-4 flex justify-between">
             <button id="confirm-add-to-cart-btn" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600">Adicionar ao Carrinho</button>
             <button id="cancel-add-to-cart-btn" class="bg-gray-300 text-gray-700 rounded-md px-4 py-2 hover:bg-gray-400">Cancelar</button>
         </div>
     </div>
 </div>
+
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="script.js"></script>
