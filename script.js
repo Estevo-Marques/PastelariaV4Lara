@@ -15,6 +15,18 @@ const elements = {
     closeCommentModalBtn: document.getElementById("close-comment-modal"),
 };
 
+window.addEventListener('load', function() {
+    // Adiciona um delay de 2 segundos (2000 milissegundos) antes de esconder a tela de carregamento
+    setTimeout(function() {
+        // Esconde a tela de carregamento
+        document.getElementById('loading-screen').style.display = 'none';
+        
+        // Mostra o conteúdo da página
+        document.getElementById('content').style.display = 'block';
+    }, 500); // Aumente o valor para o tempo desejado, 2000 = 2 segundos
+});
+
+
 const addressWarn = document.getElementById("address-warn");
 const addressInput = document.getElementById("address");
 const checkoutBtn = document.getElementById("checkout-btn");
