@@ -10,9 +10,16 @@ const cartCounter = document.getElementById("cart-count");
 const addressWarn = document.getElementById("address-warn");
 const addressInput = document.getElementById("address");
 const whatsLink = document.querySelector(".whats-link");
+const commentModal = document.getElementById("comment-modal");
+const commentInput = document.getElementById("comment-input");
+const confirmAddToCartBtn = document.getElementById("confirm-add-to-cart-btn");
+const cancelAddToCartBtn = document.getElementById("cancel-add-to-cart-btn");
+const closeCommentModalBtn = document.getElementById("close-comment-modal");
 
 let cart = [];
-
+let selectedItemName;
+let selectedItemPrice;
+let selectedItemSize;
 
 const prices = {
     "Tradicionais": {
@@ -81,6 +88,8 @@ const prices = {
         "Michelob Long Neck": { "price": 14.00 },
         "Sol Long Neck": { "price": 12.00 },
         "Stella Long Neck": { "price": 14.00 },
+            },
+    "Porções": {
         "Caipirinha de Caldo de Cana": { "price": 17.00 },
         "Mini Pasteis Tradicionais (4 un.)": { "price": 19.00 },
         "Mini Pasteis Especiais/Gourmets (4 un.)": { "price": 24.00 },
@@ -90,15 +99,15 @@ const prices = {
         "Mini Pão de Queijo (10 un.)": { "price": 16.00 },
         "Raquete de Frango (500g)": { "price": 24.00 },
         "Fritas (500g)": { "price": 20.00 },
-    }
+    },
 };
 
-
+// Carregando o DOM
 document.addEventListener("DOMContentLoaded", function() {
     whatsLink.classList.remove("hidden");
 });
 
-
+// Abrir modal do carrinho
 cartBtn.addEventListener("click", function() {
     updateCartModal();
     cartModal.style.display = "flex";
@@ -107,6 +116,7 @@ cartBtn.addEventListener("click", function() {
 });
 
 
+// Fechar o modal do carrinho
 cartModal.addEventListener("click", function(event) {
     if (event.target === cartModal) {
         closeCartModal();
@@ -114,9 +124,7 @@ cartModal.addEventListener("click", function(event) {
     }
 });
 
-
 closeModalBtn.addEventListener("click", closeCartModal);
-
 
 function closeCartModal() {
     cartModal.style.display = "none";
@@ -124,77 +132,154 @@ function closeCartModal() {
     document.body.classList.remove("overflow-hidden");
 }
 
-
+// Evento de clique no botão "Add to Cart"
 menu.addEventListener("click", function(event) {
-    let parentButton = event.target.closest(".add-to-cart-btn");
+    const parentButton = event.target.closest(".add-to-cart-btn");
     if (parentButton) {
-        const name = parentButton.getAttribute("data-name");
+        selectedItemName = parentButton.getAttribute("data-name");
         let price;
         let size;
 
-        if (prices["Bebidas"][name]) {
-            price = prices["Bebidas"][name]["price"];
+        if (prices["Bebidas"][selectedItemName]){ 
+            price = prices["Bebidas"][selectedItemName]["price"];
             size = null;
-        } else if (prices["Tradicionais"][name]) {
+
+            // Adiciona a bebida diretamente ao carrinho
+            addToCart(selectedItemName, price, size, null);
+            return; // Sai da função para não abrir o modal
+        }if (prices["Porções"][selectedItemName]) {
+            price = prices["Porções"][selectedItemName]["price"];
+            size = null;
+
+            commentModal.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden");
+        } else if (prices["Tradicionais"][selectedItemName]) {
             size = parentButton.closest('.cart-item').querySelector('input[type="radio"]:checked')?.value;
             if (size) {
-                price = prices["Tradicionais"][name][size];
+                price = prices["Tradicionais"][selectedItemName][size];
             }
         }
 
         if (price !== undefined) {
-            addToCart(name, price, size);
+            selectedItemPrice = price;
+            selectedItemSize = size;
+
+            // Abre o modal para adicionar observações
+            commentModal.classList.remove("hidden");
+            document.body.classList.add("overflow-hidden");
         }
     }
 });
 
+//asdasdasdasdasd
 
-function addToCart(name, price, size) {
-    const existingItem = cart.find(item => item.name === name && item.size === size);
+
+
+// Fechar o modal de comentários
+closeCommentModalBtn.addEventListener("click", closeCommentModal);
+cancelAddToCartBtn.addEventListener("click", closeCommentModal);
+
+// Função para fechar o modal
+function closeCommentModal() {
+    commentModal.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
+    commentInput.value = ""; // Limpa o campo de texto
+}
+
+// Adiciona item ao carrinho com observação
+confirmAddToCartBtn.addEventListener("click", function() {
+    const comment = commentInput.value.trim();
+    addToCart(selectedItemName, selectedItemPrice, selectedItemSize, comment);
+    closeCommentModal();
+});
+
+
+// Adiciona item ao carrinho
+function addToCart(name, price, size, comment) {
+    // Verifica se o item já existe no carrinho
+    const existingItem = cart.find(item => item.name === name && item.size === size && item.comment === comment);
     if (existingItem) {
+        // Se existir, aumenta a quantidade
         existingItem.quantity += 1;
     } else {
-        cart.push({ name, price: parseFloat(price), quantity: 1, size });
+        // Se não existir, adiciona novo item
+        cart.push({ name, price: parseFloat(price), quantity: 1, size, comment });
     }
     updateCartCounter();
 }
 
 
+// Atualiza o contador do carrinho
 function updateCartCounter() {
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
     cartCounter.textContent = totalQuantity;
 }
 
-
+// Atualiza o modal do carrinho
 function updateCartModal() {
     cartItemsContainer.innerHTML = "";
     let total = 0;
 
-    cart.forEach(item => {
-        const cartItem = document.createElement("div");
-        cartItem.className = "cart-item";
-        const sizeText = item.size ? `(${item.size})` : '';
-        cartItem.innerHTML = `
-        <div class="flex items-center justify-between cart-item">
-            <div>
-                <p class="font-medium">${item.name} ${sizeText}</p>
-                <p>Qtd: ${item.quantity}</p>
-                <p class="font-medium mt-2 border-gray-300 pb-4">R$ ${item.price.toFixed(2)}</p>
-            </div>
-            <button class="remove-from-cart-btn" data-name="${item.name}" data-size="${item.size || ''}">
-                Remover
-            </button>
-        </div>
-        `;
-        cartItemsContainer.appendChild(cartItem);
-        total += item.price * item.quantity;
-    });
+    
 
     cartTotal.textContent = `R$ ${total.toFixed(2)}`;
     addRemoveButtonListeners();
+    addQuantityButtonListeners(); // Adiciona os ouvintes para os botões de quantidade
 }
 
 
+function addQuantityButtonListeners() {
+    const increaseButtons = document.querySelectorAll('.increase-quantity-btn');
+    const decreaseButtons = document.querySelectorAll('.decrease-quantity-btn');
+
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const size = this.getAttribute('data-size') || null;
+            const comment = this.getAttribute('data-comment') || ''; // Pegando o comentário
+            changeCartItemQuantity(name, size, 1, comment); // Passando o comentário
+        });
+    });
+
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const size = this.getAttribute('data-size') || null;
+            const comment = this.getAttribute('data-comment') || ''; // Pegando o comentário
+            changeCartItemQuantity(name, size, -1, comment); // Passando o comentário
+        });
+    });
+}
+
+
+function changeCartItemQuantity(name, size, amount, comment = "") {
+    // Normalizando o comentário para evitar problemas de comparação
+    comment = comment.trim().toLowerCase(); // Remover espaços extras e transformar em lowercase
+
+    const item = cart.find(item => 
+        item.name === name && 
+        item.size === size && 
+        (item.comment?.trim().toLowerCase() === comment)
+    );
+
+    if (item) {
+        item.quantity += amount;
+
+        // Se a quantidade chegar a 0, remover o item do carrinho
+        if (item.quantity <= 0) {
+            removeFromCart(name, size, comment);
+        } else {
+            updateCartCounter();
+            updateCartModal();
+        }
+    }
+}
+
+
+
+
+
+// Adiciona ouvintes para botões de remoção
 function addRemoveButtonListeners() {
     const removeButtons = document.querySelectorAll('.remove-from-cart-btn');
     removeButtons.forEach(button => {
@@ -206,6 +291,7 @@ function addRemoveButtonListeners() {
     });
 }
 
+// Remove item do carrinho
 function removeFromCart(name, size) {
     const itemIndex = cart.findIndex(item => item.name === name && item.size === size);
     if (itemIndex > -1) {
@@ -220,27 +306,14 @@ function removeFromCart(name, size) {
     }
 }
 
+// Checkout
 checkoutBtn.addEventListener("click", function() {
     const address = addressInput.value.trim();
     const isOpen = checkRestauranteOpen();
 
-   
     if (!isOpen) {
-        Toastify({
-            text: "Ops, O restaurante está fechado!",
-            duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "left", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-              background: "#44BEBF",
-            },
-            onClick: function(){} 
-          }).showToast();
-        return; 
+        showToast("Ops, O restaurante está fechado!");
+        return;
     }
 
     // Verifica se o endereço foi preenchido
@@ -250,60 +323,50 @@ checkoutBtn.addEventListener("click", function() {
     } else {
         addressWarn.classList.add("hidden");
     }
+
     if (cart.length === 0){
-        Toastify({
-            text: "Ops, Parece que seu carrinho está vazio!",
-            duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
-            newWindow: true,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "left", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-              background: "#44BEBF",
-            },
-            onClick: function(){} 
-          }).showToast();
+        showToast("Ops, Parece que seu carrinho está vazio!");
         return; 
     }
+//asdasdasdasdasdasdasd
 
-
-    
     const message = cart.map(item => {
-        const sizeText = item.size ? `(${item.size})` : '';
-        return `*${item.name}* tamanho *${sizeText}* qtd: *${item.quantity}*`;
+        // Verifica se o item tem tamanho e formata o texto adequadamente
+        const sizeText = item.size ? `(${item.size})` : ''; 
+        const formattedSizeText = sizeText ? ` tamanho *${sizeText}*` : ''; // Inclui apenas se sizeText não estiver vazio
+
+        return `*${item.name}*${formattedSizeText} *qtd: (${item.quantity}*)` + (item.comment ? ` - ${item.comment}` : '');
     }).join("%0A");
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const finalMessage = `*Pedido*%0A${message}%0A*Total:* R$ ${total.toFixed(2)}%0A*Endereço:* ${address}`;
 
-   
     const whatsappLink = `https://api.whatsapp.com/send?phone=5547996870409&text=${finalMessage}`;
     window.open(whatsappLink);
 });
 
+//asdasdasdasdasdasda
 
 
-addressInput.addEventListener("input", function() {
-    if (!addressWarn.classList.contains("hidden")) {
-        addressWarn.classList.add("hidden");
-    }
-});
+// Função para exibir mensagens de aviso
+function showToast(text) {
+    Toastify({
+        text: text,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` ou `bottom`
+        position: "left", // `left`, `center` ou `right`
+        stopOnFocus: true, // Previne o fechamento do toast ao passar o mouse
+        style: {
+            background: "#44BEBF",
+        },
+        onClick: function() {} 
+    }).showToast();
+}
 
-const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
-
-addToCartButtons.forEach(button => {
-    button.addEventListener("click", function() {
-        button.classList.add("clicked");
-        setTimeout(() => {
-            button.classList.remove("clicked");
-        }, 200);
-    });
-});
-
-
-
+// Verifica se o restaurante está aberto
 function checkRestauranteOpen() {
     const data = new Date();
     const hora = data.getHours();
@@ -311,13 +374,80 @@ function checkRestauranteOpen() {
     return (hora >= 16 || (hora === 16 && minutos >= 0)) && (hora < 23 || (hora === 23 && minutos <= 30));
 }
 
+// Atualiza a cor do indicador de horário
 const spanItem = document.getElementById("date-span");
 const isOpen = checkRestauranteOpen();
 
-if(isOpen){
+if (isOpen) {
     spanItem.classList.remove("bg-red-500");
     spanItem.classList.add("bg-green-600");
 } else {
     spanItem.classList.remove("bg-green-600");
     spanItem.classList.add("bg-red-500");
+}
+function updateCartModal() {
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => { 
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item flex items-center justify-between"; // Certifique-se que 'cart-item' tenha display flex
+        
+        const sizeText = item.size ? `(${item.size})` : '';
+        const commentText = item.comment ? `Observação: ${item.comment}` : '';
+    
+        // Verifica se a quantidade é 1, se for, usa o ícone de lixeira
+        const decreaseButtonHTML = item.quantity === 1 
+            ? `<button class="remove-from-cart-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}">
+                <i class="fas fa-trash-alt"></i>
+               </button>`
+            : `<button class="decrease-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-minus"></i></button>`;
+    
+        // Definindo o conteúdo do item do carrinho
+        cartItem.innerHTML = `
+        <div>
+            <p class="font-medium">${item.name} ${sizeText}</p>
+            <p>${commentText}</p>
+            <p class="font-medium mt-2 border-gray-300 pb-4">R$ ${(item.price * item.quantity).toFixed(2)}</p>
+        </div>
+        <div class="flex items-center justify-end space-x-2 ml-auto">
+            ${decreaseButtonHTML}
+            <span>Qtd: ${item.quantity}</span>
+            <button class="increase-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+        `;
+        
+        cartItemsContainer.appendChild(cartItem);
+        total += item.price * item.quantity;
+    });
+    
+
+    cartTotal.textContent = `R$ ${total.toFixed(2)}`;
+    addRemoveButtonListeners();
+    addQuantityButtonListeners();
+}
+function addRemoveButtonListeners() {
+    const removeButtons = document.querySelectorAll('.remove-from-cart-btn');
+
+    removeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const size = this.getAttribute('data-size') || null;
+            const comment = this.getAttribute('data-comment') || ''; // Pegando o comentário
+            removeFromCart(name, size, comment); // Função para remover o item do carrinho
+        });
+    });
+}
+function removeFromCart(name, size, comment = "") {
+    comment = comment.trim().toLowerCase();
+
+    // Filtra o carrinho para remover o item correspondente
+    cart = cart.filter(item => 
+        !(item.name === name && item.size === size && (item.comment?.trim().toLowerCase() === comment))
+    );
+
+    updateCartCounter();
+    updateCartModal();
 }
