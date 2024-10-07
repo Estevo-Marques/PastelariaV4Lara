@@ -106,12 +106,22 @@
             border: none;
         }
         .add-to-cart-btn {
-            transition: transform 0.2s;
+
+            color: white;
+            cursor: pointer;
+            transition: transform 0.4s ease, background-color 0.3s ease; /* Transições para suavizar animações */
         }
 
-        .add-to-cart-btn.clicked {
-            transform: scale(1.2); 
+        .add-to-cart-btn:hover {
+            background-color: #36A2A3; /* Muda a cor quando o mouse passa por cima */
+            transform: scale(1.08); /* Aumenta o tamanho do botão levemente */
         }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.95); /* Levemente menor quando o botão é clicado */
+            background-color: #2B8585; /* Muda a cor quando o botão é clicado */
+        }
+
         .cart-item {
             padding: 10px; 
         }
@@ -313,7 +323,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Carne">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Pastel de Carne">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                                 
                             </button>
@@ -337,7 +347,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel de Queijo">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Pastel de Queijo">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -358,7 +368,7 @@
                                     <span class="text-base font-bold">R$ 12.00 (Pequeno)</span>
                                 </label>
                             </div>
-                            <button class="px-5 py-1 rounded add-to-cart-btn" data-name="Pastel de Frango">
+                            <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-name="Pastel de Frango">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -380,7 +390,7 @@
                                     <span class="text-base font-bold">R$ 12.00 (Pequeno)</span>
                                 </label>
                             </div>
-                            <button class="px-5 py-1 rounded add-to-cart-btn" data-name="Pastel de Banana">
+                            <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-name="Pastel de Banana">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -419,7 +429,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Portuguesa">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Portuguesa">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -442,7 +452,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Carne com Bacon">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Carne com Bacon">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -465,7 +475,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Carne com Queijo">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Carne com Queijo">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -488,7 +498,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Palmito">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Frango com Palmito">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -511,7 +521,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Requeijão">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Frango com Requeijão">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -534,7 +544,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Calabresa">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Frango com Calabresa">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -557,7 +567,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Frango com Queijo">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Frango com Queijo">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -580,7 +590,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Calabresa">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Calabresa">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -603,7 +613,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Pastel De Pizza">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Pastel De Pizza">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -626,7 +636,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Queijo com Milho">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Queijo com Milho">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -649,7 +659,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Queijo com Bacon">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Queijo com Bacon">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -672,7 +682,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Queijo, Ovo, Tomate Seco e Orégano">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Queijo, Ovo, Tomate Seco e Orégano">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -695,7 +705,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Palmito c/ Alho Poró e Requeijão">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Palmito c/ Alho Poró e Requeijão">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -718,7 +728,7 @@
                                         
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Brócolis">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Brócolis">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -761,7 +771,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Prestígio">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Prestígio">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -784,7 +794,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Chocolate Preto com Morango">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Chocolate Preto com Morango">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -807,7 +817,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Chocolate Branco com Morango">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Chocolate Branco com Morango">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -830,7 +840,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Chocolate Preto e Branco">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Chocolate Preto e Branco">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -853,7 +863,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Romeu e Julieta">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Romeu e Julieta">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -876,7 +886,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Banana com Chocolate Preto">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Banana com Chocolate Preto">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -899,7 +909,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Banana com Chocolate Branco">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Banana com Chocolate Branco">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -922,7 +932,7 @@
                                     
                                 </label>
                             </div>
-                            <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Banoffee">
+                            <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Banoffee">
                                 <i class="fa fa-cart-plus text-lg text-white"></i>
                             </button>
                         </div>
@@ -960,7 +970,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Berbigão">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Berbigão">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -983,7 +993,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Camarão">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Camarão">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1006,7 +1016,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Camarão com Requeijão">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Camarão com Requeijão">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1029,7 +1039,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Camarão com Palmito">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Camarão com Palmito">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1052,7 +1062,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Linguiça Blumenau">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Linguiça Blumenau">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1075,7 +1085,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Quatro Queijos">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Quatro Queijos">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1098,7 +1108,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Paçoca de Pinhão">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Paçoca de Pinhão">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1121,7 +1131,7 @@
                                 
                             </label>
                         </div>
-                        <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Siri">
+                        <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Siri">
                             <i class="fa fa-cart-plus text-lg text-white"></i>
                         </button>
                     </div>
@@ -1150,7 +1160,7 @@
                 <p class="font-bold text-xl">Porção de Mini Pasteis (4 un.) - Tradicionais</p><p class="font-semibold">Até 2 sabores Tradicionais</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 19.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="19.00" data-name="Mini Pasteis Tradicionais (4 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="19.00" data-name="Mini Pasteis Tradicionais (4 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1162,7 +1172,7 @@
                 <p class="font-bold text-xl">Porção de Mini Pasteis (4 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 2 sabores Especiais/Gourmets</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 24.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="24.00" data-name="Mini Pasteis Especiais/Gourmets (4 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="24.00" data-name="Mini Pasteis Especiais/Gourmets (4 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1174,7 +1184,7 @@
                 <p class="font-bold text-xl">Porção de Mini Pasteis (8 un.) - Tradicionais</p><p class="font-semibold">Até 4 sabores Tradicionais</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 30.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="30.00" data-name="Mini Pasteis Tradicionais (8 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="30.00" data-name="Mini Pasteis Tradicionais (8 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1186,7 +1196,7 @@
                 <p class="font-bold text-xl">Porção de Mini Pasteis (8 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 4 sabores Especiais/Gourmets</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 37.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="37.00" data-name="Mini Pasteis Especiais/Gourmets (8 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="37.00" data-name="Mini Pasteis Especiais/Gourmets (8 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1198,7 +1208,7 @@
                 <p class="font-bold text-xl">Bolinho de Feijão</p><p class="font-semibold">(5 un.)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 15.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="15.00" data-name="Bolinho de Feijão (5 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="15.00" data-name="Bolinho de Feijão (5 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1210,7 +1220,7 @@
                 <p class="font-bold text-xl">Mini Pão de Queijo</p><p class="font-semibold">(10 un.)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 16.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="16.00" data-name="Mini Pão de Queijo (10 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="16.00" data-name="Mini Pão de Queijo (10 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1222,7 +1232,7 @@
                 <p class="font-bold text-xl">Raquete de Frango</p><p class="font-semibold">(500g)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 25.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="25.00" data-name="Raquete de Frango (500g)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="25.00" data-name="Raquete de Frango (500g)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1234,7 +1244,7 @@
                 <p class="font-bold text-xl">Fritas</p><p class="font-semibold">(500g)</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 30.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn" data-price="30.00" data-name="Fritas (500g)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="30.00" data-name="Fritas (500g)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1261,7 +1271,7 @@
                                         <span class="text-base font-bold">R$ 10.00 (300ml)</span>
                                     </label>
                                 </div>
-                                <button class=" px-5 py-1 rounded  add-to-cart-btn" data-name="Caldo de Cana">
+                                <button class=" px-5 py-1 rounded  add-to-cart-btn " id="animation-btn-comprar" data-name="Caldo de Cana">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1273,7 +1283,7 @@
                             <p class="font-bold text-xl">Caipirinha de Caldo de Cana</p><p class="font-semibold">(Vodka, Cachaça ou Gin)</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 19.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="19.00" data-name="Caipirinha de Caldo de Cana">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="19.00" data-name="Caipirinha de Caldo de Cana">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1287,7 +1297,7 @@
                             <p class="font-bold text-xl">Água s/ Gás</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 4.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 4.00" data-name="Água s/ Gás">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 4.00" data-name="Água s/ Gás">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1300,7 +1310,7 @@
                             <p class="font-bold text-xl">Água c/ Gás</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 4.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 4.00" data-name="Água c/ Gás">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 4.00" data-name="Água c/ Gás">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1313,7 +1323,7 @@
                             <p class="font-bold text-xl">Coca-Cola</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Coca-Cola">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Coca-Cola">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1327,7 +1337,7 @@
                             <p class="font-bold text-xl">Coca-Cola Zero</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Coca-Cola Zero">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Coca-Cola Zero">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1340,7 +1350,7 @@
                             <p class="font-bold text-xl">Laranjinha</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Laranjinha">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Laranjinha">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1353,7 +1363,7 @@
                             <p class="font-bold text-xl">Pepsi</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Pepsi">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Pepsi">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1366,7 +1376,7 @@
                             <p class="font-bold text-xl">Schweppes</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Schweppes">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Schweppes">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1379,7 +1389,7 @@
                             <p class="font-bold text-xl">Fanta Laranja</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Fanta Laranja">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Fanta Laranja">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1392,7 +1402,7 @@
                             <p class="font-bold text-xl">Guaraná</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Guaraná">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Guaraná">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1405,7 +1415,7 @@
                             <p class="font-bold text-xl">Guaraná Zero</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 7.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 7.00" data-name="Guaraná Zero">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 7.00" data-name="Guaraná Zero">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1418,7 +1428,7 @@
                             <p class="font-bold text-xl">Choco-Leite</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Choco-Leite">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Choco-Leite">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1431,7 +1441,7 @@
                             <p class="font-bold text-xl">Ice Tea Limão</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Ice Tea Limão">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Ice Tea Limão">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1444,7 +1454,7 @@
                             <p class="font-bold text-xl">Ice Tea Pêssego</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Ice Tea Pêssego">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Ice Tea Pêssego">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1457,7 +1467,7 @@
                             <p class="font-bold text-xl">Del Valle Pêssego</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Del Valle Pêssego">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Del Valle Pêssego">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1470,7 +1480,7 @@
                             <p class="font-bold text-xl">Del Valle Uva</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Del Valle Uva">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Del Valle Uva">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1483,7 +1493,7 @@
                             <p class="font-bold text-xl">Amstel Lata</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Amstel Lata">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Amstel Lata">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1496,7 +1506,7 @@
                             <p class="font-bold text-xl">Brahma Lata</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 8.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price=" 8.00" data-name="Brahma Lata">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price=" 8.00" data-name="Brahma Lata">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1509,7 +1519,7 @@
                             <p class="font-bold text-xl">Heineken Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 14.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Heineken Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="14.00" data-name="Heineken Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1522,7 +1532,7 @@
                             <p class="font-bold text-xl">Heineken Long Neck Zero</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 14.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Heineken Long Neck Zero">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="14.00" data-name="Heineken Long Neck Zero">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1535,7 +1545,7 @@
                             <p class="font-bold text-xl">Amstel Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 12.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Amstel Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="12.00" data-name="Amstel Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1548,7 +1558,7 @@
                             <p class="font-bold text-xl">Amstel Ultra Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 12.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Amstel Ultra Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="12.00" data-name="Amstel Ultra Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1561,7 +1571,7 @@
                             <p class="font-bold text-xl">Eisenbahn Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 12.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Eisenbahn Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="12.00" data-name="Eisenbahn Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1574,7 +1584,7 @@
                             <p class="font-bold text-xl">Michelob Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 14.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Michelob Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="14.00" data-name="Michelob Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1587,7 +1597,7 @@
                             <p class="font-bold text-xl">Sol Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 12.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Sol Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="12.00" data-name="Sol Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1600,7 +1610,7 @@
                             <p class="font-bold text-xl">Stella Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 14.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="14.00" data-name="Stella Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="14.00" data-name="Stella Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
@@ -1613,7 +1623,7 @@
                             <p class="font-bold text-xl">Budweiser Long Neck</p>
                             <div class="flex items-center gap-2 justify-between mt-3">
                                 <p class="font-bold text-base">R$ 12.00</p>
-                                <button class=" px-5 py-1 rounded add-to-cart-btn" data-price="12.00" data-name="Budweiser Long Neck">
+                                <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="12.00" data-name="Budweiser Long Neck">
                                     <i class="fa fa-cart-plus text-lg text-white"></i>
                                 </button>
                             </div>
