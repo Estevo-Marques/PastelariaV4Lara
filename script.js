@@ -219,9 +219,9 @@ function updateCartModal() {
                 <p>${commentText}</p>
                 <p>R$ ${(item.price * item.quantity).toFixed(2)}</p>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center gap-4">
                 <button class="decrease-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-minus"></i></button>
-                <span>Qtd: ${item.quantity}</span>
+                <span class="font-bold text-lg">${item.quantity}</span>
                 <button class="increase-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-plus"></i></button>
             </div>
         `;
