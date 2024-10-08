@@ -209,15 +209,15 @@ function updateCartModal() {
 
     cart.forEach(item => {
         const cartItem = document.createElement("div");
-        cartItem.className = "cart-item flex items-center justify-between";
+        cartItem.className = "cart-item flex items-center justify-between border-b border-gray-500 border-opacity-10 pb-4 mx-4";
         const sizeText = item.size ? `(${item.size})` : '';
         const commentText = item.comment ? `Observação: ${item.comment}` : '';
 
         cartItem.innerHTML = `
             <div>
-                <p>${item.name} ${sizeText}</p>
-                <p>${commentText}</p>
-                <p>R$ ${(item.price * item.quantity).toFixed(2)}</p>
+                <p class="font-bold" >${item.name} ${sizeText}</p>
+                <p class="break-word" >${commentText}</p>
+                <p class="font-semibold" >R$ ${(item.price * item.quantity).toFixed(2)}</p>
             </div>
             <div class="flex items-center gap-4">
                 <button class="decrease-quantity-btn" data-name="${item.name}" data-size="${item.size || ''}" data-comment="${item.comment || ''}"><i class="fas fa-minus"></i></button>
@@ -301,12 +301,12 @@ checkoutBtn.addEventListener("click", function() {
         showToast("Ops, Parece que seu carrinho está vazio!");
         return; 
     }
-//asdasdasdasdasdasdasd
+
 
     const message = cart.map(item => {
-        // Verifica se o item tem tamanho e formata o texto adequadamente
+   
         const sizeText = item.size ? `(${item.size})` : ''; 
-        const formattedSizeText = sizeText ? ` tamanho *${sizeText}*` : ''; // Inclui apenas se sizeText não estiver vazio
+        const formattedSizeText = sizeText ? ` tamanho *${sizeText}*` : ''; 
 
         return `*${item.name}*${formattedSizeText} *qtd: (${item.quantity}*)` + (item.comment ? ` - ${item.comment}` : '');
     }).join("%0A");
@@ -317,7 +317,7 @@ checkoutBtn.addEventListener("click", function() {
     const whatsappLink = `https://api.whatsapp.com/send?phone=5547996870409&text=${finalMessage}`;
     window.open(whatsappLink);
 });
-// Função para exibir mensagens de aviso
+
 function showToast(text) {
     Toastify({
         text: text,
@@ -335,7 +335,7 @@ function showToast(text) {
     }).showToast();
 }
 
-// Verifica se o restaurante está aberto
+
 function checkRestauranteOpen() {
     const data = new Date();
     const hora = data.getHours();
@@ -343,45 +343,54 @@ function checkRestauranteOpen() {
     return (hora >= 16 || (hora === 16 && minutos >= 0)) && (hora < 23 || (hora === 23 && minutos <= 30));
 }
 
-// Atualiza a cor do indicador de horário
+
 const spanItem = document.getElementById("date-span");
 const isOpen = checkRestauranteOpen();
 
-if (isOpen) {
-    spanItem.classList.remove("bg-red-500");
-    spanItem.classList.add("bg-green-600");
-} else {
-    spanItem.classList.remove("bg-green-600");
-    spanItem.classList.add("bg-red-500");
-}
+spanItem.classList.toggle("bg-green-600", isOpen);
+spanItem.classList.toggle("bg-red-500", !isOpen);
 
 
 
-let quantityModal = 1; // Quantidade inicial
+let quantityModal = 1; 
 
-// Atualiza a exibição da quantidade
+
 function updateQuantityDisplayModal() {
     document.getElementById('quantity-display-modal').textContent = quantityModal;
 }
 
-// Botões de incremento e decremento de quantidade no modal
+
 document.getElementById('increase-quantity-modal-btn').addEventListener('click', () => {
     quantityModal++;
     updateQuantityDisplayModal();
 });
 
 document.getElementById('decrease-quantity-modal-btn').addEventListener('click', () => {
-    if (quantityModal > 1) {
-        quantityModal--;
+    quantityModal = quantityModal > 1 ? quantityModal - 1 : quantityModal;
         updateQuantityDisplayModal();
+    }
+);
+
+
+elements.confirmAddToCartBtn.addEventListener("click", () => {
+    const comment = elements.commentInput.value.trim();
+    addToCart(selectedItem.name, selectedItem.price, selectedItem.size, comment, quantityModal - 1); 
+    closeCommentModal();
+    quantityModal = 1;  
+    updateQuantityDisplayModal();  
+});
+
+
+const commentInput = document.getElementById('comment-input');
+const charCount = document.getElementById('charCount');
+const maxLength = 140;
+
+commentInput.addEventListener('input', () => {
+    const currentLength = commentInput.value.length;
+    charCount.textContent = `${currentLength}/${maxLength}`;
+    
+    if (currentLength > maxLength) {
+        commentInput.value = commentInput.value.slice(0, maxLength);
     }
 });
 
-// Quando o usuário confirmar, a quantidade selecionada será adicionada ao carrinho
-elements.confirmAddToCartBtn.addEventListener("click", () => {
-    const comment = elements.commentInput.value.trim();
-    addToCart(selectedItem.name, selectedItem.price, selectedItem.size, comment, quantityModal - 1);  // Passando a quantidade
-    closeCommentModal();
-    quantityModal = 1;  // Reinicia a quantidade para o valor padrão
-    updateQuantityDisplayModal();  // Atualiza o display de quantidade
-});
