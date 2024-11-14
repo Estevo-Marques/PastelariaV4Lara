@@ -81,7 +81,6 @@ const prices = {
         "Coca-Cola Zero": { "price": 7.00 },
         "Laranjinha": { "price": 7.00 },
         "Fanta Laranja": { "price": 7.00 },
-        "Laranjinha": { "price": 7.00 },
         "Guaraná Zero": { "price": 7.00 },
         "Guaraná": { "price": 7.00 },
         "Pepsi": { "price": 7.00 },
@@ -106,13 +105,15 @@ const prices = {
     "Porções": {
         "Caipirinha de Caldo de Cana": { "price": 17.00 },
         "Mini Pasteis Tradicionais (4 un.)": { "price": 19.00 },
-        "Mini Pasteis Especiais/Gourmets (4 un.)": { "price": 24.00 },
+        "Mini Pasteis Especiais/Gourmet (4 un.)": { "price": 24.00 },
         "Mini Pasteis Tradicionais (8 un.)": { "price": 30.00 },
-        "Mini Pasteis Especiais/Gourmets (8 un.)": { "price": 37.00 },
+        "Mini Pasteis Especiais/Gourmet (8 un.)": { "price": 37.00 },
         "Bolinho de Feijão (5 un.)": { "price": 20.00 },
         "Mini Pão de Queijo (10 un.)": { "price": 16.00 },
         "Raquete de Frango (500g)": { "price": 24.00 },
         "Fritas (500g)": { "price": 20.00 },
+        "Combo Mini Gourmet": { "price": 31.00 },
+        "Combo Mini Tradicionais": { "price": 26.00 },
     },
 };
 
@@ -278,33 +279,52 @@ function toggleWhatsLink(hide) {
 
 
 
+// Obtendo elementos relevantes
+const deliveryOptionYes = document.querySelector("input[name='ParaEntrega'][value='Sim']");
+const deliveryOptionNo = document.querySelector("input[name='ParaEntrega'][value='Não']");
+const addressDiv = document.getElementById("endereçodeentrega"); // Div do endereço de entrega
 
 
+// Função para atualizar a visibilidade da div de endereço
+function updateAddressVisibility() {
+    if (deliveryOptionYes.checked) {
+        addressDiv.classList.remove("hidden");
+    } else {
+        addressDiv.classList.add("hidden");
+        addressWarn.classList.add("hidden"); // Esconde aviso de endereço, se visível
+        addressInput.value = ""; // Limpa o campo de endereço se não for necessário
+    }
+}
+
+// Adicionando eventos de mudança nos inputs de entrega
+deliveryOptionYes.addEventListener("change", updateAddressVisibility);
+deliveryOptionNo.addEventListener("change", updateAddressVisibility);
+
+// Função de checkout com verificação de entrega
 checkoutBtn.addEventListener("click", function() {
     const address = addressInput.value.trim();
     const isOpen = checkRestauranteOpen();
+    const isDelivery = deliveryOptionYes.checked; // Checa se é para entrega
 
     if (!isOpen) {
         showToast("Ops, O restaurante está fechado!");
         return;
     }
 
-    // Verifica se o endereço foi preenchido
-    if (!address) {
+    // Se for para entrega e o endereço estiver vazio, mostra aviso
+    if (isDelivery && !address) {
         addressWarn.classList.remove("hidden");
         return;
     } else {
         addressWarn.classList.add("hidden");
     }
 
-    if (cart.length === 0){
+    if (cart.length === 0) {
         showToast("Ops, Parece que seu carrinho está vazio!");
-        return; 
+        return;
     }
 
-
     const message = cart.map(item => {
-   
         const sizeText = item.size ? `(${item.size})` : ''; 
         const formattedSizeText = sizeText ? ` tamanho *${sizeText}*` : ''; 
 
@@ -312,17 +332,26 @@ checkoutBtn.addEventListener("click", function() {
     }).join("%0A");
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    const finalMessage = `*Pedido*%0A${message}%0A*Total:* R$ ${total.toFixed(2)}%0A*Endereço:* ${address}`;
+
+    // Se for para entrega, inclui o endereço; caso contrário, omite
+    const finalMessage = `*Pedido*%0A${message}%0A*Total:* R$ ${total.toFixed(2)}` +
+                         (isDelivery ? `%0A*Endereço:* ${address}` : "");
 
     const whatsappLink = `https://api.whatsapp.com/send?phone=5547996870409&text=${finalMessage}`;
+    
     window.open(whatsappLink);
 });
+
+
+// Inicializa visibilidade da div de endereço
+updateAddressVisibility();
+
 
 function showToast(text) {
     Toastify({
         text: text,
         duration: 3000,
-        destination: "https://github.com/apvarun/toastify-js",
+        destination: "https://wa.me/5547996870409",
         newWindow: true,
         close: true,
         gravity: "top", // `top` ou `bottom`
@@ -393,4 +422,3 @@ commentInput.addEventListener('input', () => {
         commentInput.value = commentInput.value.slice(0, maxLength);
     }
 });
-

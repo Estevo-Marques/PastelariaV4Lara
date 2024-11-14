@@ -136,6 +136,12 @@
         .border-produtos {
             border-bottom: 1px solid #44BEBF; 
         }
+        .border-promotion {
+            border: 1px solid #44BEBF;
+            border-radius: 6px;
+            
+        }
+
 
         .pb-2 {
             padding-bottom: 0.5rem; 
@@ -306,7 +312,14 @@
  </h2>
 
     <div id="menu" >
+
+        
         <div class="px-30 lg:px-40">
+
+            
+            
+
+
             <div class="flex justify-center items-center gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
                 <img
                     src="./assets/tradicionais.png"
@@ -346,6 +359,9 @@
                     </div>
                 </div>
                 
+                
+
+
                 <div class="flex gap-2 cart-item border-produtos pb-4">
                     <div class="w-full">
                         <p class="font-bold text-xl">Pastel de Queijo</p>
@@ -1168,6 +1184,49 @@
             </p>
         </div>
     </div>
+
+    <div id="combos" class="">
+        <div id="Tradicionais" class="grid grid-cols-1 md:grid-cols-2 gap-2  md:gap-10 mx-auto max-w-7xl px-2 mb-16 ">
+
+
+
+        <!-- Combo Mini Pastéis Tradicionais -->
+        <div class="flex gap-2 border-promotion shadow-md cart-item">
+            <img src="./assets/caldo-de-cana.png" alt="Combo 4 mini pastéis tradicionais + 1 caldo de cana de 300ml" class="w-28 h-28 rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+            
+            <div class="w-full">
+                <p class="font-bold text-xl">Combo Mini Tradicionais</p>
+                <p class="font-semibold text-gray-600"> 4 Mini Pasteis - Tradicionais</p>
+                <p class="font-semibold text-gray-600"> + 1 Caldo de 300ml</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-base">R$ 26.00</p>
+                    <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="26.00" data-name="Combo Mini Tradicionais">
+                        <i class="fa fa-cart-plus text-lg text-white "></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combo Mini Pastéis Gourmet -->
+        <div class="flex gap-2 border-promotion shadow-md  cart-item ">
+            <img src="./assets/caldo-de-cana.png" alt="Combo 4 mini pastéis gourmet + 1 caldo de cana de 300ml" class="w-28 h-28  rounded-md hover:scale-110 hover:rotate-2 duration-300"/>
+            
+            <div class="w-full">
+                <p class="font-bold text-xl">Combo Mini Gourmet</p>
+                <p class="font-semibold text-gray-600"> 4 Mini Pasteis - Especiais/Gourmet</p>
+                <p class="font-semibold text-gray-600"> + 1 Caldo de 300ml</p>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-base">R$ 31.00</p>
+                    <button class=" px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="31.00" data-name="Combo Mini Gourmet">
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
     <div id="porções" class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 
         <div class="flex gap-2 border-produtos pb-4">
@@ -1184,10 +1243,10 @@
 
         <div class="flex gap-2 border-produtos pb-4">
             <div class="w-full">
-                <p class="font-bold text-xl">Porção de Mini Pasteis (4 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 2 sabores Especiais/Gourmets</p>
+                <p class="font-bold text-xl">Porção de Mini Pasteis (4 un.) - Especiais/Gourmet</p><p class="font-semibold">Até 2 sabores Especiais/Gourmet</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 24.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="24.00" data-name="Mini Pasteis Especiais/Gourmets (4 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="24.00" data-name="Mini Pasteis Especiais/Gourmet (4 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1208,10 +1267,10 @@
 
         <div class="flex gap-2 border-produtos pb-4">
             <div class="w-full">
-                <p class="font-bold text-xl">Porção de Mini Pasteis (8 un.) - Especiais/Gourmets</p><p class="font-semibold">Até 4 sabores Especiais/Gourmets</p>
+                <p class="font-bold text-xl">Porção de Mini Pasteis (8 un.) - Especiais/Gourmet</p><p class="font-semibold">Até 4 sabores Especiais/Gourmet</p>
                 <div class="flex items-center gap-2 justify-between mt-3">
                     <p class="font-bold text-base">R$ 37.00</p>
-                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="37.00" data-name="Mini Pasteis Especiais/Gourmets (8 un.)">
+                    <button class="px-5 py-1 rounded add-to-cart-btn " id="animation-btn-comprar" data-price="37.00" data-name="Mini Pasteis Especiais/Gourmet (8 un.)">
                         <i class="fa fa-cart-plus text-lg text-white"></i>
                     </button>
                 </div>
@@ -1657,14 +1716,31 @@
             <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
             <div id="cart-items" class="flex-grow overflow-y-auto mb-2 max-h-[60vh] space-y-1"></div>
             <p class="font-bold text-xl">Total: <span id="cart-total">0.00</span></p>
-            <p class="font-bold mt-4">Endereço de entrega</p>
-            <input
-                type="text"
-                placeholder="Digite seu endereço completo..."
-                id="address"
-                class="w-full border-2 p-1 rounded my-1"
-            />
-            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
+
+            <p class="font-bold mt-4">Seu pedido é para entrega?</p>
+            <div class="input-entrega flex items-center gap-3">
+                <label class="flex items-center space-x-2">
+                    <input type="radio" name="ParaEntrega" value="Sim" class="custom-radio" checked>
+                    <span class="text-base font-bold">Sim</span>
+                </label>
+
+                <label class="flex items-center space-x-2">
+                    <input type="radio" name="ParaEntrega" value="Não" class="custom-radio">
+                    <span class="text-base font-bold">Não</span>
+                </label>
+            </div>
+
+
+                <div id="endereçodeentrega" class="hidden">
+                    <p class="font-bold mt-4">Endereço de entrega</p>
+                    <input
+                        type="text"
+                        placeholder="Digite seu endereço completo..."
+                        id="address"
+                        class="w-full border-2 p-1 rounded my-1"
+                    />
+                    <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo</p>
+                </div>
             <div class="flex items-center justify-between mt-5 w-full">
                 <button id="close-modal-btn" class="bg-red-500 text-white px-4 py-1 rounded">Fechar</button>
                 <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
@@ -1711,6 +1787,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
