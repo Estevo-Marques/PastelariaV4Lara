@@ -337,7 +337,7 @@ checkoutBtn.addEventListener("click", function() {
     const finalMessage = `*Pedido*%0A${message}%0A*Total:* R$ ${total.toFixed(2)}` +
                          (isDelivery ? `%0A*Endereço:* ${address}` : "");
 
-    const whatsappLink = `https://api.whatsapp.com/send?phone=5547996870409&text=${finalMessage}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=5547996624439&text=${finalMessage}`;
     
     window.open(whatsappLink);
 });
@@ -351,7 +351,7 @@ function showToast(text) {
     Toastify({
         text: text,
         duration: 3000,
-        destination: "https://wa.me/5547996870409",
+        destination: "https://wa.me/5547996624439",
         newWindow: true,
         close: true,
         gravity: "top", // `top` ou `bottom`
