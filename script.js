@@ -1,4 +1,4 @@
-// Selecionando elementos do DOM
+
 const elements = {
     menu: document.getElementById("menu"),
     cartBtn: document.getElementById("cart-bnt"),
@@ -16,14 +16,14 @@ const elements = {
 };
 
 window.addEventListener('load', function() {
-    // Adiciona um delay de 2 segundos (2000 milissegundos) antes de esconder a tela de carregamento
+
     setTimeout(function() {
-        // Esconde a tela de carregamento
+      
         document.getElementById('loading-screen').style.display = 'none';
         
-        // Mostra o conteúdo da página
+      
         document.getElementById('content').style.display = 'block';
-    }, 500); // Aumente o valor para o tempo desejado, 2000 = 2 segundos
+    }, 500); 
 });
 
 
@@ -34,7 +34,7 @@ const checkoutBtn = document.getElementById("checkout-btn");
 let cart = [];
 let selectedItem = { name: null, price: null, size: null };
 
-// Lista de preços
+
 const prices = {
     "Tradicionais": {
         "Caldo de Cana": { "P": 10.00, "G": 12.00 },
@@ -117,17 +117,17 @@ const prices = {
     },
 };
 
-// Carrega o DOM
+
 document.addEventListener("DOMContentLoaded", () => elements.whatsLink.classList.remove("hidden"));
 
-// Abrir modal do carrinho
+
 elements.cartBtn.addEventListener("click", () => {
     updateCartModal();
     elements.cartModal.style.display = "flex";
     toggleWhatsLink(true);
 });
 
-// Fechar o modal do carrinho
+
 [elements.cartModal, elements.closeModalBtn].forEach(el =>
     el.addEventListener("click", (e) => {
         if (e.target === elements.cartModal || e.target === elements.closeModalBtn) closeCartModal();
@@ -139,7 +139,7 @@ function closeCartModal() {
     toggleWhatsLink(false);
 }
 
-// Adicionar item ao carrinho
+
 elements.menu.addEventListener("click", (event) => {
     const btn = event.target.closest(".add-to-cart-btn");
     if (!btn) return;
@@ -151,20 +151,20 @@ elements.menu.addEventListener("click", (event) => {
 
     selectedItem.name = itemName;
 
-    // Verifica se é um item de Bebidas ou Porções, que não têm tamanho
+    
     if (prices.Bebidas[itemName]) {
-        // Adiciona bebida diretamente ao carrinho
+       
         addToCart(itemName, item.price);
     } else if (prices.Porções[itemName]) {
-        // Para Porções, abrir o modal de comentário
+        
         selectedItem.price = item.price;
-        openCommentModal(); // Abre o modal de comentários para porções
+        openCommentModal(); 
     } else {
-        // Para Tradicionais, verificar se o tamanho foi selecionado
+       
         selectedItem.size = btn.closest('.cart-item').querySelector('input[type="radio"]:checked')?.value;
         if (selectedItem.size) {
             selectedItem.price = item[selectedItem.size];
-            openCommentModal(); // Abre o modal de comentários para Tradicionais
+            openCommentModal(); 
         }
     }
 });
@@ -172,25 +172,25 @@ elements.menu.addEventListener("click", (event) => {
 
 elements.confirmAddToCartBtn.addEventListener("click", () => {
     const comment = elements.commentInput.value.trim();
-    addToCart(selectedItem.name, selectedItem.price, selectedItem.size, comment, quantityModal); // Use quantityModal diretamente
+    addToCart(selectedItem.name, selectedItem.price, selectedItem.size, comment, quantityModal); 
     closeCommentModal();
-    quantityModal = 1;  // Reinicia a quantidade para o valor padrão
-    updateQuantityDisplayModal();  // Atualiza o display de quantidade
+    quantityModal = 1;  
+    updateQuantityDisplayModal(); 
 });
 
 
-// Fechar modal de comentário
+
 [elements.closeCommentModalBtn, elements.cancelAddToCartBtn].forEach(btn =>
     btn.addEventListener("click", closeCommentModal)
 );
 
 function addToCart(name, price, size = null, comment = "", quantity = 1) {
-    // Certifique-se de que a quantidade é sempre maior que zero
+   
     if (quantity <= 0) return;
 
     const existingItem = cart.find(item => item.name === name && item.size === size && item.comment === comment);
     if (existingItem) {
-        existingItem.quantity += quantity; // Adiciona a quantidade selecionada
+        existingItem.quantity += quantity; 
     } else {
         cart.push({ name, price: parseFloat(price), quantity: quantity, size, comment });
     }
@@ -279,39 +279,39 @@ function toggleWhatsLink(hide) {
 
 
 
-// Obtendo elementos relevantes
+
 const deliveryOptionYes = document.querySelector("input[name='ParaEntrega'][value='Sim']");
 const deliveryOptionNo = document.querySelector("input[name='ParaEntrega'][value='Não']");
-const addressDiv = document.getElementById("endereçodeentrega"); // Div do endereço de entrega
+const addressDiv = document.getElementById("endereçodeentrega"); 
 
 
-// Função para atualizar a visibilidade da div de endereço
+
 function updateAddressVisibility() {
     if (deliveryOptionYes.checked) {
         addressDiv.classList.remove("hidden");
     } else {
         addressDiv.classList.add("hidden");
-        addressWarn.classList.add("hidden"); // Esconde aviso de endereço, se visível
-        addressInput.value = ""; // Limpa o campo de endereço se não for necessário
+        addressWarn.classList.add("hidden");
+        addressInput.value = ""; 
     }
 }
 
-// Adicionando eventos de mudança nos inputs de entrega
+
 deliveryOptionYes.addEventListener("change", updateAddressVisibility);
 deliveryOptionNo.addEventListener("change", updateAddressVisibility);
 
-// Função de checkout com verificação de entrega
+
 checkoutBtn.addEventListener("click", function() {
     const address = addressInput.value.trim();
     const isOpen = checkRestauranteOpen();
-    const isDelivery = deliveryOptionYes.checked; // Checa se é para entrega
+    const isDelivery = deliveryOptionYes.checked; 
 
     if (!isOpen) {
         showToast("Ops, O restaurante está fechado!");
         return;
     }
 
-    // Se for para entrega e o endereço estiver vazio, mostra aviso
+    
     if (isDelivery && !address) {
         addressWarn.classList.remove("hidden");
         return;
@@ -333,7 +333,7 @@ checkoutBtn.addEventListener("click", function() {
 
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-    // Se for para entrega, inclui o endereço; caso contrário, omite
+    
     const finalMessage = `*Pedido*%0A${message}%0A*Total:* R$ ${total.toFixed(2)}` +
                          (isDelivery ? `%0A*Endereço:* ${address}` : "");
 
@@ -343,7 +343,7 @@ checkoutBtn.addEventListener("click", function() {
 });
 
 
-// Inicializa visibilidade da div de endereço
+
 updateAddressVisibility();
 
 
